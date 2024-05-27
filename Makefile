@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/05/26 21:55:48 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/05/27 20:09:09 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,4 +54,7 @@ fclean : clean
 
 re: fclean all
 
+debug:  $(LIBMLXDOTA) $(LIBFTDOTA)
+	cc -g $(SRCS) $(LIBMLX42) $(LIBFTDOTA) $(INC) -o debug_$(NAME)
+	
 .PHONY: all clean fclean re

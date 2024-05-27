@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/26 21:48:36 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/27 20:35:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int32_t	main(int argc, char *argv[])
 	mlx_t	*mlx;
 
 	if (argc != 2)
-		ft_printf("Invalid input! Pleaser enter a map: ./so_long map.ber");
+	{
+		ft_printf("Error\n");
+		ft_printf("Invalid number of input arguments!\n"
+			"Please enter a map: ./so_long map.ber\n");
+	}
 	else
 	{
 		map.filepath = argv[1];
