@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/27 20:37:00 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/28 20:13:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,48 @@ char	**read_map_file(char *filepath)
 	free(map_lines);
 	return (map_data);
 }
-//  int check_map_rectangle(char **matrix)
-// {
-// 	size_t i;
 
-// 	i = 0;
-// 	while (i < )
-// 	{
-// 		/* code */
-// 	}
-	
-// } 
+int	check_map_rectangle(char **matrix)
+{
+	size_t	matrix_len;
+	size_t	x;
+
+	matrix_len = ft_strlen(matrix[0]);
+	x = 1;
+	while (matrix[x] != NULL)
+	{
+		if (ft_strlen(matrix[x]) != matrix_len)
+			return (0);
+		x++;
+	}
+	return (1);
+}
+
+int	check_wall_borders(char **matrix, char *filepath)
+{
+	size_t	x;
+	size_t	y;
+	size_t	matrix_len;
+	size_t	row_count;
+
+	matrix_len = ft_strlen(matrix[0]);
+	row_count = get_row_count(filepath);
+	x = 0;
+	while (x < matrix_len)
+	{
+		if (matrix[0][x] != '1' || matrix[row_count - 1][x] != '1')
+			return (0);
+		x++;
+	}
+	y = 0;
+	while (y < row_count)
+	{
+		if (matrix[y][0] != '1' || matrix[y][matrix_len - 1] != '1')
+			return (0);
+		y++;
+	}
+	return (1);
+}
 
 int	check_valid_map_input(char *map_path)
 {
@@ -72,14 +103,26 @@ int	check_valid_map_input(char *map_path)
 	if (check_filetype(map_path) == 0)
 	{
 		ft_printf("Error\n");
-		ft_printf("Invalid map file extension!\nPlease enter a .ber-file");
+		ft_printf("Invalid map file extension! Please enter a .ber-file\n");
 		return (0);
 	}
 	map_data = read_map_file(map_path);
 	if (map_data == NULL)
 	{
 		ft_printf("Error\n");
-		ft_printf("Reading .ber-file failed!\nPlease enter a .ber-file");
+		ft_printf("Reading .ber-file failed! Please enter a .ber-file!\n");
+		return (0);
+	}
+	if (check_map_rectangle(map_data) == 0)
+	{
+		ft_printf("Error\n");
+		ft_printf("Invalid map data! Please enter a rectangular map!\n");
+		return (0);
+	}
+	if (check_wall_borders(map_data, map_path) == 0)
+	{
+		ft_printf("Error\n");
+		ft_printf("Invalid map data!Please enter a map surrounded by walls!\n");
 		return (0);
 	}
 	return (1);
