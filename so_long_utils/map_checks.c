@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/28 20:13:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/29 22:41:37 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	check_wall_borders(char **matrix, char *filepath)
 	return (1);
 }
 
+
+
 int	check_valid_map_input(char *map_path)
 {
 	char	**map_data;
@@ -123,6 +125,12 @@ int	check_valid_map_input(char *map_path)
 	{
 		ft_printf("Error\n");
 		ft_printf("Invalid map data!Please enter a map surrounded by walls!\n");
+		return (0);
+	}
+	if (check_map_components(map_path, map_data, '0') == 0)
+	{
+		ft_printf("Error\n");
+		ft_printf("Invalid components! Please enter a map with valid components!\n");
 		return (0);
 	}
 	return (1);

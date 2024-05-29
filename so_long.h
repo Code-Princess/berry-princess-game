@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/28 20:03:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/29 22:42:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,12 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 
-typedef struct s_map
-{
-	char	*filepath;
-	int32_t	length;
-	int32_t	width;
-	char	**data;
-}	t_map;
-
 int		check_valid_map_input(char *map_filename);
 int		check_filetype(char	*filepath);
 char	**read_map_file(char *filepath);
 int		check_map_rectangle(char **matrix);
 int		check_wall_borders(char **matrix, char *filepath);
 size_t	get_row_count(char *filepath);
+int		check_map_components(char *filename, char **matrix, char component);
 
 #endif

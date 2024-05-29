@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/05/28 20:08:50 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/05/29 22:15:24 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ MLX42_URL	= https://github.com/codam-coding-college/MLX42.git
 INCL		:=	-I ./MLX42/include
 
 LIBFTDOTA	:=	libft/libft.a
-SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_checks_utils.c
+SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_checks_utils.c \
+				./so_long_utils/components_checks.c
 OBJS		:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
