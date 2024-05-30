@@ -6,11 +6,37 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 22:08:33 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/30 16:42:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:51:29 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	check_wall_borders(char **matrix, char *filepath)
+{
+	size_t	x;
+	size_t	y;
+	size_t	matrix_len;
+	size_t	row_count;
+
+	matrix_len = ft_strlen(matrix[0]);
+	row_count = get_row_count(filepath);
+	x = 0;
+	while (x < matrix_len)
+	{
+		if (matrix[0][x] != '1' || matrix[row_count - 1][x] != '1')
+			return (0);
+		x++;
+	}
+	y = 0;
+	while (y < row_count)
+	{
+		if (matrix[y][0] != '1' || matrix[y][matrix_len - 1] != '1')
+			return (0);
+		y++;
+	}
+	return (1);
+}
 
 int	check_map_components(char *components, char *filepath, char **matrix)
 {

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/29 22:39:52 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:15:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,15 @@
 int32_t	main(int argc, char *argv[])
 {
 	mlx_t	*mlx;
-	char	*filepath;
 
 	if (argc != 2)
 	{
-		ft_printf("Error\n");
-		ft_printf("Invalid number of input arguments!\n"
-			"Please enter a map: ./so_long map.ber\n");
+		ft_printf("Error\nInvalid number of input arguments! \
+		Please enter: ./so_long map.ber\n");
 	}
 	else
 	{
-		filepath = argv[1];
-		if (check_valid_map_input(filepath) == 1)
+		if (check_valid_input(argv[1]) == 1)
 		{
 			if (!(mlx = mlx_init(WIDTH, HEIGHT, "Berry Princess Game", true)))
 			{

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/30 16:37:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:20:07 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,67 +70,45 @@ int	check_map_rectangle(char **matrix)
 	return (1);
 }
 
-int	check_wall_borders(char **matrix, char *filepath)
+int	check_valid_map(char *filepath, char **matrix, char *components_array)
 {
-	size_t	x;
-	size_t	y;
-	size_t	matrix_len;
-	size_t	row_count;
-
-	matrix_len = ft_strlen(matrix[0]);
-	row_count = get_row_count(filepath);
-	x = 0;
-	while (x < matrix_len)
+	if (check_map_rectangle(matrix) == 0)
 	{
-		if (matrix[0][x] != '1' || matrix[row_count - 1][x] != '1')
-			return (0);
-		x++;
+		ft_printf("Error\nInvalid map! It has to be a rectangle!\n");
+		return (0);
 	}
-	y = 0;
-	while (y < row_count)
+	if (check_wall_borders(matrix, filepath) == 0)
 	{
-		if (matrix[y][0] != '1' || matrix[y][matrix_len - 1] != '1')
-			return (0);
-		y++;
+		ft_printf("Error\nInvalid map! It has to be sourrounded by walls!\n");
+		return (0);
+	}
+	if (check_map_components(components_array, filepath, matrix) == 0)
+	{
+		ft_printf("Error\nInvalid components!\n");
+		return (0);
 	}
 	return (1);
 }
 
-int	check_valid_map_input(char *map_path)
+int	check_valid_input(char *map_path)
 {
 	char	**map_data;
 	char	*components;
 
 	components = "CEP";
-	if (check_filetype(map_path) == 0)
-	{
-		ft_printf("Error\n");
-		ft_printf("Invalid map file extension! Please enter a .ber-file\n");
-		return (0);
-	}
 	map_data = read_map_file(map_path);
 	if (map_data == NULL)
 	{
-		ft_printf("Error\n");
-		ft_printf("Reading .ber-file failed! Please enter a .ber-file!\n");
+		ft_printf("Error\nReading .ber-file failed!\n");
 		return (0);
 	}
-	if (check_map_rectangle(map_data) == 0)
+	if (check_filetype(map_path) == 0)
 	{
-		ft_printf("Error\n");
-		ft_printf("Invalid map data! Please enter a rectangular map!\n");
+		ft_printf("Error\nInvalid map file extension! Use .ber-file\n");
 		return (0);
 	}
-	if (check_wall_borders(map_data, map_path) == 0)
+	if (check_valid_map(map_path, map_data, components) == 0)
 	{
-		ft_printf("Error\n");
-		ft_printf("Invalid map data!Please enter a map surrounded by walls!\n");
-		return (0);
-	}
-	if (check_map_components(components, map_path, map_data) == 0)
-	{
-		ft_printf("Error\n");
-		ft_printf("Invalid components! Please enter a map with valid components!\n");
 		return (0);
 	}
 	return (1);
