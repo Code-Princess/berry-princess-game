@@ -6,12 +6,12 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/05/29 22:15:24 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/05/30 16:37:55 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= so_long
-CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast 
 LIBMLXDOTA	:= ./MLX42/build/libmlx42.a
 
 LIBMLX42	:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/29 22:42:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:29:36 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**read_map_file(char *filepath);
 int		check_map_rectangle(char **matrix);
 int		check_wall_borders(char **matrix, char *filepath);
 size_t	get_row_count(char *filepath);
-int		check_map_components(char *filename, char **matrix, char component);
+int		count_comps(char c, char **matrix, size_t length, size_t width);
+int		check_map_components(char *components, char *filepath, char **matrix);
 
 #endif

@@ -6,36 +6,53 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 22:08:33 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/29 22:46:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:42:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	check_map_components(char *filepath, char **matrix, char component)
+int	check_map_components(char *components, char *filepath, char **matrix)
 {
-	size_t		x;
-	size_t		y;
-	size_t	matrix_len;
-	size_t	matrix_height;
+	size_t	i;
+	size_t	map_len;
+	size_t	map_height;
+	int		*comp_counts;
 
-	x = 0;
-	y = 0;
-	matrix_len = ft_strlen(matrix[0]);
-	matrix_height = get_row_count(filepath);
-
-	while (x < matrix_len)
+	i = 0;
+	comp_counts = (int *)malloc((ft_strlen(components)) * sizeof(int));
+	map_len = ft_strlen(matrix[0]);
+	map_height = get_row_count(filepath);
+	while (i < ft_strlen(components))
 	{
-		while (y < matrix_height)
-		{
-			if (matrix[][] == component)
-			{
-				/* code */
-			}
-			
-			j++;
-		}
+		comp_counts[i] = count_comps(components[i], matrix, \
+		map_len, map_height);
 		i++;
 	}
-	return (1);
+	if (comp_counts[0] < 1 || comp_counts[1] != 1 || comp_counts[1] != 1)
+		return (0);
+	else
+		return (1);
+}
+
+int	count_comps(char c, char **matrix, size_t length, size_t width)
+{
+	size_t	count;
+	size_t	x;
+	size_t	y;
+
+	count = 0;
+	y = 0;
+	while (y < width)
+	{
+		x = 0;
+		while (x < length)
+		{
+			if (matrix[y][x] == c)
+				count++;
+			x++;
+		}
+		y++;
+	}
+	return (count);
 }
