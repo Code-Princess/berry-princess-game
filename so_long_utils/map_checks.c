@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/31 17:08:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:00:31 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,25 +102,23 @@ int	check_valid_input(char *map_path)
 {
 	char	**map_data;
 	char	*valid_map_elements;
-	size_t	matrix_len;
-	size_t	matrix_height;
+	t_point	*matrix_size;
+	t_point	*start_position;
 
 	valid_map_elements = "CEP01";
 	if (check_valid_filetype(map_path) == 0)
-	{
-		ft_printf("Error\nInvalid map file extension! Use .ber-file\n");
-		return (0);
-	}
+		return (ft_printf("Error\nInvalid map file extension! Use .ber-file\n"), 0);
 	map_data = read_map_file(map_path);
 	if (map_data == NULL)
-	{
-		ft_printf("Error\nReading .ber-file failed!\n");
-		return (0);
-	}
-	matrix_len = ft_strlen(map_data[0]);
-	matrix_height = get_row_count(map_path);
+		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
+	matrix_size = malloc(1 * sizeof(t_point));
+	matrix_size->x = ft_strlen(map_data[0]);
+	matrix_size->y = get_row_count(map_path);
 	if (check_valid_map(valid_map_elements, \
-	map_data, matrix_len, matrix_height) == 0)
+	map_data, matrix_size->x, matrix_size->y) == 0)
+		return (0);
+	start_position = get_start_position(map_data, matrix_size->x, matrix_size->y);
+	if (check_valid_flood_fill_path(map_data, matrix_size, start_position) == 0)
 		return (0);
 	return (1);
 }

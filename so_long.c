@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/31 12:24:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:58:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int32_t	main(int argc, char *argv[])
 	{
 		if (check_valid_input(argv[1]) == 1)
 		{
-			if (!(mlx = mlx_init(WIDTH, HEIGHT, "Berry Princess Game", true)))
+			mlx = mlx_init(WIDTH, HEIGHT, "Berry Princess Game", true);
+			if (!(mlx))
 			{
 				puts(mlx_strerror(mlx_errno));
 				return (EXIT_FAILURE);
