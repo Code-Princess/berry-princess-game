@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/30 22:15:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:24:42 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int32_t	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		ft_printf("Error\nInvalid number of input arguments! \
-		Please enter: ./so_long map.ber\n");
+		Use: ./so_long map.ber\n");
 	}
 	else
 	{

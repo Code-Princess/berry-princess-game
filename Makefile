@@ -6,12 +6,12 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/05/30 16:37:55 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/05/31 16:43:30 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= so_long
-CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast 
+CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLXDOTA	:= ./MLX42/build/libmlx42.a
 
 LIBMLX42	:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
@@ -22,6 +22,7 @@ LIBFTDOTA	:=	libft/libft.a
 SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_checks_utils.c \
 				./so_long_utils/components_checks.c
 OBJS		:=	${SRCS:.c=.o}
+OBJS_DEBUG		:=	${SRCS:.c=_debug.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling so_long ..."
@@ -29,8 +30,16 @@ $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@ $(INCL)
+%_debug.o: %.c
+	cc $(CFLAGS) -g -c $< -o $@ $(INCL)
 
 all: $(LIBMLXDOTA) $(NAME)
+debug: $(LIBMLXDOTA) so_long_debug
+
+
+so_long_debug: $(LIBMLXDOTA) libft/libft_debug.a $(OBJS_DEBUG)
+	@echo "Compiling so_long_DEBUG ..."
+	cc -g $(OBJS_DEBUG) $(LIBMLX42) libft/libft_debug.a $(INC) -o so_long_debug
 
 $(LIBMLXDOTA):
 	@echo "Making MLX42..."
@@ -40,19 +49,22 @@ $(LIBMLXDOTA):
 $(LIBFTDOTA):
 	$(MAKE) -C libft/
 
+libft/libft_debug.a:
+	$(MAKE) -C libft/ libft_debug.a
 
 clean:
 	@echo "Cleaning object files..."
 	$(MAKE) clean -C libft/
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_DEBUG)
 	rm -rf ./MLX42/build
 	rm -rf ./MLX42
 
 fclean : clean
 	@echo "Cleaning so_long"
 	$(MAKE) fclean -C libft/
-	rm -f $(NAME)
+	
+	rm -f $(NAME) so_long_debug
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug

@@ -6,13 +6,13 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/30 22:20:07 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:08:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	check_filetype(char	*filepath)
+int	check_valid_filetype(char	*filepath)
 {
 	size_t	i;
 
@@ -70,21 +70,29 @@ int	check_map_rectangle(char **matrix)
 	return (1);
 }
 
-int	check_valid_map(char *filepath, char **matrix, char *components_array)
+int	check_valid_map(char *components, char **matrix, \
+size_t matrix_len, size_t matrix_height)
 {
 	if (check_map_rectangle(matrix) == 0)
 	{
 		ft_printf("Error\nInvalid map! It has to be a rectangle!\n");
 		return (0);
 	}
-	if (check_wall_borders(matrix, filepath) == 0)
+	if (check_valid_map_elements(components, matrix, \
+	matrix_len, matrix_height) == 0)
 	{
-		ft_printf("Error\nInvalid map! It has to be sourrounded by walls!\n");
+		ft_printf("Error\nInvalid map elements! Use only: 01CEP\n");
 		return (0);
 	}
-	if (check_map_components(components_array, filepath, matrix) == 0)
+	if (check_valid_component_counts(components, matrix, \
+		matrix_len, matrix_height) == 0)
 	{
-		ft_printf("Error\nInvalid components!\n");
+		ft_printf("Error\nInvalid number of components!\n");
+		return (0);
+	}
+	if (check_wall_borders(matrix, matrix_len, matrix_height) == 0)
+	{
+		ft_printf("Error\nInvalid map! It has to be sourrounded by walls!\n");
 		return (0);
 	}
 	return (1);
@@ -93,23 +101,26 @@ int	check_valid_map(char *filepath, char **matrix, char *components_array)
 int	check_valid_input(char *map_path)
 {
 	char	**map_data;
-	char	*components;
+	char	*valid_map_elements;
+	size_t	matrix_len;
+	size_t	matrix_height;
 
-	components = "CEP";
+	valid_map_elements = "CEP01";
+	if (check_valid_filetype(map_path) == 0)
+	{
+		ft_printf("Error\nInvalid map file extension! Use .ber-file\n");
+		return (0);
+	}
 	map_data = read_map_file(map_path);
 	if (map_data == NULL)
 	{
 		ft_printf("Error\nReading .ber-file failed!\n");
 		return (0);
 	}
-	if (check_filetype(map_path) == 0)
-	{
-		ft_printf("Error\nInvalid map file extension! Use .ber-file\n");
+	matrix_len = ft_strlen(map_data[0]);
+	matrix_height = get_row_count(map_path);
+	if (check_valid_map(valid_map_elements, \
+	map_data, matrix_len, matrix_height) == 0)
 		return (0);
-	}
-	if (check_valid_map(map_path, map_data, components) == 0)
-	{
-		return (0);
-	}
 	return (1);
 }
