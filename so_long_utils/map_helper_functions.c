@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checks_utils.c                                 :+:      :+:    :+:   */
+/*   map_helper_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 20:07:09 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/28 20:07:35 by llacsivy         ###   ########.fr       */
+/*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/06/01 15:57:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,18 @@ size_t	get_row_count(char *filepath)
 		count++;
 	}
 	return (count);
+}
+
+int	char_in_set(char c, char *set)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_strlen(set))
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

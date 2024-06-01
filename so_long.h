@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/31 23:00:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/01 16:02:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ int		check_valid_component_counts(char *components, char **matrix, \
 		size_t map_len, size_t map_height);
 int		check_valid_map_elements(char *components, char **matrix, \
 		size_t matrix_len, size_t matrix_height);
-void	flood_fill(char **tab, t_point size, t_point begin);
-void	fill(char **tab, t_point size, t_point current_point, char to_fill);
+void	flood_fill(char **tab, t_point *size, t_point *begin);
+void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill);
 int		check_valid_flood_fill_path(char **matrix, t_point *matrix_size, \
 		t_point *begin_position);
 t_point	*get_start_position(char **matrix, size_t matrix_len, \
 		size_t matrix_height);
+void	write_matrix(char **matrix, size_t height);
+int		char_in_set(char c, char *set);
 
 #endif
