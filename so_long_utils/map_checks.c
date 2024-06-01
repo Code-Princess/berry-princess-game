@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/01 16:49:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:45:49 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,10 @@ int	check_valid_input(char *map_path)
 	char	*valid_map_elements;
 	t_point	*matrix_size;
 	t_point	*start_position;
+	char	*components_to_reach;
 
 	valid_map_elements = "CEP01";
+	components_to_reach = "CEP";
 	if (check_valid_filetype(map_path) == 0)
 		return (ft_printf("Error\nInvalid map file extension! \
 		Use .ber-file\n"), 0);
@@ -120,7 +122,7 @@ int	check_valid_input(char *map_path)
 		return (0);
 	start_position = get_start_position(map_data, matrix_size->x, \
 	matrix_size->y);
-	if (check_valid_flood_fill_path(map_data, matrix_size, start_position) == 0)
+	if (check_valid_flood_fill_path(map_data, matrix_size, start_position, components_to_reach) == 0)
 		return (0);
 	return (1);
 }

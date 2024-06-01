@@ -6,42 +6,49 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/01 16:50:29 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:28:53 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
-		t_point *begin_position)
+		t_point *begin_position, char *components_to_reach)
 {
-	char	**origin_map;
-	size_t	y;
+	t_point	index;
+	size_t	i;
 
-	origin_map = malloc(matrix_size->y * sizeof(char *));
-	y = 0;
-	while (y < matrix_size->y)
-	{
-		origin_map[y] = ft_strdup(matrix[y]);
-		if (origin_map[y] == NULL)
-			return (0);
-		y++;
-	}
-	write_matrix(origin_map, matrix_size->y);
-	write(1, "\n", 1);
 	flood_fill(matrix, matrix_size, begin_position);
-	write(1, "\n", 1);
-	write_matrix(matrix, matrix_size->y);
-	write(1, "\n", 1);
+	index.y = 0;
+	while (index.y < matrix_size->y)
+	{
+		index.x = 0;
+		while (index.x < matrix_size->x)
+		{
+			i = 0;
+			while (i < ft_strlen(components_to_reach))
+			{
+				if (matrix[index.y][index.x] == components_to_reach[i])
+					return (ft_printf("Error\nInvalid map input! "
+										"Not reachable components!\n"),
+							0);
+				i++;
+				if (i == ft_strlen(components_to_reach))
+					break ;
+			}
+			index.x++;
+		}
+		index.y++;
+	}
 	return (1);
 }
 
 void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill)
 {
-	if (current_point->y < 0 || current_point->y >= size->y || \
-	current_point->x < 0 || current_point->x >= size->x || \
-	current_point->x >= size->x || \
-	!char_in_set(tab[current_point->y][current_point->x], to_fill))
+	if (current_point->y < 0 || current_point->y >= size->y ||
+		current_point->x < 0 || current_point->x >= size->x ||
+		current_point->x >= size->x ||
+		!char_in_set(tab[current_point->y][current_point->x], to_fill))
 		return ;
 	tab[current_point->y][current_point->x] = 'F';
 	current_point->x -= 1;
