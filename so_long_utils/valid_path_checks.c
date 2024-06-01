@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/01 21:28:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:35:12 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 			while (i < ft_strlen(components_to_reach))
 			{
 				if (matrix[index.y][index.x] == components_to_reach[i])
-					return (ft_printf("Error\nInvalid map input! "
-										"Not reachable components!\n"),
-							0);
+					return (ft_printf("Error\nInvalid map input! " \
+									"Not reachable components!\n"), 0);
 				i++;
 				if (i == ft_strlen(components_to_reach))
 					break ;
@@ -45,9 +44,9 @@ int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 
 void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill)
 {
-	if (current_point->y < 0 || current_point->y >= size->y ||
-		current_point->x < 0 || current_point->x >= size->x ||
-		current_point->x >= size->x ||
+	if (current_point->y < 0 || current_point->y >= size->y || \
+		current_point->x < 0 || current_point->x >= size->x || \
+		current_point->x >= size->x || \
 		!char_in_set(tab[current_point->y][current_point->x], to_fill))
 		return ;
 	tab[current_point->y][current_point->x] = 'F';
