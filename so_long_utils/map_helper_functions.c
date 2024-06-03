@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/01 15:57:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:04:27 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ int	char_in_set(char c, char *set)
 		i++;
 	}
 	return (0);
+}
+
+void	write_matrix(char **matrix, size_t height)
+{
+	size_t	y;
+
+	y = 0;
+	while (y < height)
+	{
+		ft_putendl_fd(matrix[y], 1);
+		y++;
+	}
 }

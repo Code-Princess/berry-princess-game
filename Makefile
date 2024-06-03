@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/01 15:41:43 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/06/03 13:06:10 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ INCL		:=	-I ./MLX42/include
 
 LIBFTDOTA	:=	libft/libft.a
 SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_helper_functions.c \
-				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c \
-				test_helper_functions.c 
+				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c 
 OBJS		:=	${SRCS:.c=.o}
 OBJS_DEBUG		:=	${SRCS:.c=_debug.o}
 
