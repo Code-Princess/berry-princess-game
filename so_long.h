@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/03 13:45:11 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:12:35 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # endif
 
 # include "MLX42/include/MLX42/MLX42.h"
-# include "libft/libft.h"
-# include <fcntl.h>
 
 typedef struct s_point
 {
@@ -29,9 +27,17 @@ typedef struct s_point
 	size_t	y;
 }	t_point;
 
-int		check_valid_input(char *map_path);
+typedef struct s_game
+{
+	mlx_t	*mlx;
+	char	**map_data;
+	t_point	*matrix_size;
+	
+}	t_game;
+
+int		check_valid_input(char *map_path, t_game *game);
 int		check_valid_filetype(char	*filepath);
-char	**read_map_file(char *filepath);
+char	**read_map_file(char *filepath, t_game *game);
 int		check_valid_map(char *components, char **matrix, \
 		size_t matrix_len, size_t matrix_height);
 int		check_map_rectangle(char **matrix);

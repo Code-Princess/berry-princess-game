@@ -6,11 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/01 21:34:45 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/04 20:50:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include <fcntl.h>
 
 int	check_valid_filetype(char	*filepath)
 {
@@ -26,9 +29,8 @@ int	check_valid_filetype(char	*filepath)
 		return (0);
 }
 
-char	**read_map_file(char *filepath)
+char	**read_map_file(char *filepath, t_game *game)
 {
-	char	**map_data;
 	int		fd;
 	char	*map_lines;
 	char	*next_line;
@@ -49,9 +51,9 @@ char	**read_map_file(char *filepath)
 		if (next_line == NULL)
 			break ;
 	}
-	map_data = ft_split(map_lines, '\n');
+	game->map_data = ft_split_modified(map_lines, '\n', game);
 	free(map_lines);
-	return (map_data);
+	return (game->map_data);
 }
 
 int	check_map_rectangle(char **matrix)
@@ -98,11 +100,9 @@ size_t matrix_len, size_t matrix_height)
 	return (1);
 }
 
-int	check_valid_input(char *map_path)
+int	check_valid_input(char *map_path, t_game *game)
 {
-	char	**map_data;
 	char	*valid_map_elements;
-	t_point	*matrix_size;
 	t_point	*start_position;
 	char	*components_to_reach;
 
@@ -111,18 +111,18 @@ int	check_valid_input(char *map_path)
 	if (check_valid_filetype(map_path) == 0)
 		return (ft_printf("Error\nInvalid map file extension! \
 		Use .ber-file\n"), 0);
-	map_data = read_map_file(map_path);
-	if (map_data == NULL)
+		game->map_data = read_map_file(map_path, game);
+	if (game->map_data == NULL)
 		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
-	matrix_size = malloc(1 * sizeof(t_point));
-	matrix_size->x = ft_strlen(map_data[0]);
-	matrix_size->y = get_row_count(map_path);
+	game->matrix_size = malloc(1 * sizeof(t_point));
+	game->matrix_size->x = ft_strlen(game->map_data[0]);
+	game->matrix_size->y = get_row_count(map_path);
 	if (check_valid_map(valid_map_elements, \
-	map_data, matrix_size->x, matrix_size->y) == 0)
+	game->map_data, game->matrix_size->x, game->matrix_size->y) == 0)
 		return (0);
-	start_position = get_start_position(map_data, matrix_size->x, \
-	matrix_size->y);
-	if (check_valid_flood_fill_path(map_data, matrix_size, start_position, \
+	start_position = get_start_position(game->map_data, game->matrix_size->x, \
+	game->matrix_size->y);
+	if (check_valid_flood_fill_path(game->map_data, game->matrix_size, start_position, \
 	components_to_reach) == 0)
 		return (0);
 	return (1);

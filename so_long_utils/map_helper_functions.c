@@ -6,11 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/03 13:04:27 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/04 13:04:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include <fcntl.h>
 
 size_t	get_row_count(char *filepath)
 {
