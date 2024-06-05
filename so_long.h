@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/05 16:30:20 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:16:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ t_point	*get_start_position(char **matrix, size_t matrix_len, \
 void	write_matrix(char **matrix, size_t height);
 int		char_in_set(char c, char *set);
 t_game	*game_init (t_game *game);
+int		set_game_field(t_game *game, char * texture_path);
 
 #endif

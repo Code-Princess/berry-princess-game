@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/05 16:20:08 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:13:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int32_t	main(int argc, char *argv[])
 			princess_game->mlx = mlx_init(princess_game->game_window_size->x, princess_game->game_window_size->y, "Berry Princess Game", true);
 			if (!(princess_game->mlx))
 			{
-				puts(mlx_strerror(mlx_errno));
-				return (EXIT_FAILURE);
+				ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1);
+				return (0);
 			}
+			set_game_field(princess_game, "textures/strawberry.png");
 			
-	
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
 			
