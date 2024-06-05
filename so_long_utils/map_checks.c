@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/04 20:50:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:23:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ int	check_valid_input(char *map_path, t_game *game)
 	if (game->map_data == NULL)
 		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
 	game->matrix_size = malloc(1 * sizeof(t_point));
+	if (game->matrix_size == NULL)
+		return (0);
 	game->matrix_size->x = ft_strlen(game->map_data[0]);
 	game->matrix_size->y = get_row_count(map_path);
 	if (check_valid_map(valid_map_elements, \

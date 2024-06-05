@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/04 20:54:16 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:20:08 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int32_t	main(int argc, char *argv[])
 	
 	t_game *princess_game;
 	
-	princess_game = malloc(1 * sizeof(t_game));
 	if (argc != 2)
 	{
 		ft_printf("Error\nInvalid number of input arguments! \
@@ -48,20 +47,17 @@ int32_t	main(int argc, char *argv[])
 	}
 	else
 	{
+		princess_game = malloc(1 * sizeof(t_game));
 		if (check_valid_input(argv[1], princess_game) == 1)
 		{
-			princess_game->mlx = mlx_init(WIDTH, HEIGHT, "Berry Princess Game", true);
+			princess_game = game_init(princess_game);
+			princess_game->mlx = mlx_init(princess_game->game_window_size->x, princess_game->game_window_size->y, "Berry Princess Game", true);
 			if (!(princess_game->mlx))
 			{
 				puts(mlx_strerror(mlx_errno));
 				return (EXIT_FAILURE);
 			}
 			
-// mlx_texture_t* texture = mlx_load_png("textures/princess.png");
-
-// mlx_image_t* img = mlx_texture_to_image(mlx, texture);
-	
-// mlx_image_to_window(mlx, img, 0, 0);
 	
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
