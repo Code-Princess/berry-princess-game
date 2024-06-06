@@ -6,12 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:51 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/05 22:03:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:02:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include "../libft/libft.h"	
+#include "../Lib_ft/libft.h"	
 
 t_game	*game_init(t_game *game)
 {
@@ -42,7 +42,7 @@ int	set_game_field(t_game *game, char *texture_path)
 		ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1);
 		return (0);
 	}
-if (mlx_image_to_window(game->mlx, img, 0, 0) < 0)
+	if (mlx_image_to_window(game->mlx, img, 0, 0) < 0)
 		return (0);
 	// mlx_loop(game->mlx);
 	return (1);

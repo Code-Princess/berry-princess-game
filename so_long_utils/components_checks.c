@@ -6,13 +6,13 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 22:08:33 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/04 14:13:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:02:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
+# include "../Lib_ft/libft.h"
 # include <fcntl.h>
 
 int	check_wall_borders(char **matrix, size_t matrix_len, size_t matrix_height)

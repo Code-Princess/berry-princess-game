@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/05 16:28:13 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/06/06 15:02:59 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBMLX42	:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL	= https://github.com/codam-coding-college/MLX42.git
 INCL		:=	-I ./MLX42/include
 
-LIBFTDOTA	:=	libft/libft.a
+LIBFTDOTA	:=	Lib_ft/libft.a
 SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_helper_functions.c \
 				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c ./so_long_utils/game_functions.c \
 				
@@ -38,9 +38,9 @@ all: $(LIBMLXDOTA) $(NAME)
 debug: $(LIBMLXDOTA) so_long_debug
 
 
-so_long_debug: $(LIBMLXDOTA) libft/libft_debug.a $(OBJS_DEBUG)
+so_long_debug: $(LIBMLXDOTA) Lib_ft/libft_debug.a $(OBJS_DEBUG)
 	@echo "Compiling so_long_DEBUG ..."
-	cc -g $(OBJS_DEBUG) $(LIBMLX42) libft/libft_debug.a $(INC) -o so_long_debug
+	cc -g $(OBJS_DEBUG) $(LIBMLX42) Lib_ft/libft_debug.a $(INC) -o so_long_debug
 
 $(LIBMLXDOTA):
 	@echo "Making MLX42..."
@@ -48,21 +48,21 @@ $(LIBMLXDOTA):
 	cmake ./MLX42 -B ./MLX42/build && make -C ./MLX42/build -j4
 
 $(LIBFTDOTA):
-	$(MAKE) -C libft/
+	$(MAKE) -C Lib_ft/
 
-libft/libft_debug.a:
-	$(MAKE) -C libft/ libft_debug.a
+Lib_ft/libft_debug.a:
+	$(MAKE) -C Lib_ft/ libft_debug.a
 
 clean:
 	@echo "Cleaning object files..."
-	$(MAKE) clean -C libft/
+	$(MAKE) clean -C Lib_ft/
 	rm -f $(OBJS) $(OBJS_DEBUG)
 	rm -rf ./MLX42/build
 	rm -rf ./MLX42
 
 fclean : clean
 	@echo "Cleaning so_long"
-	$(MAKE) fclean -C libft/
+	$(MAKE) fclean -C Lib_ft/
 	
 	rm -f $(NAME) so_long_debug
 
