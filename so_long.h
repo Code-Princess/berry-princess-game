@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 14:12:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:44:37 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ typedef struct s_point
 
 typedef struct s_game
 {
-	mlx_t	*mlx;
-	char	**map_data;
-	t_point	*matrix_size;
-	t_point	*game_window_size;
-	size_t	moves_counter;
+	mlx_t			*mlx;
+	char			**map_data;
+	t_point			*matrix_size;
+	t_point			*game_window_size;
+	size_t			moves_counter;
+	mlx_image_t		**images;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -56,6 +57,7 @@ t_point		*get_start_position(char **matrix, size_t matrix_len,
 void		write_matrix(char **matrix, size_t height);
 int			char_in_set(char c, char *set);
 t_game		*game_init(t_game *game);
-int			set_game_field(t_game *game, char *texture_path);
-
+// int			load_texture(t_game *game, char *texture_path);
+// int			load_texture(char *texture_path);
+int			images_init(t_game *game);
 #endif

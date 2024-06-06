@@ -6,13 +6,13 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 15:02:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../Lib_ft/libft.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 
 int	check_valid_filetype(char	*filepath)

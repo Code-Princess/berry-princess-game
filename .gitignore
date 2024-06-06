@@ -1,0 +1,5 @@
+*.o
+so_long
+MLX42
+.out
+*debug*

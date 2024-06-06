@@ -6,16 +6,16 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 15:02:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "Lib_ft/libft.h"
+#include "libft/libft.h"
 #include "MLX42/include/MLX42/MLX42.h"
 
 static mlx_image_t	*image;
-	
+
 void	ft_hook(void *param)
 {
 	mlx_t	*mlx;
@@ -37,7 +37,6 @@ int32_t	main(int argc, char *argv[])
 {
 	t_game				*princess_game;
 
-
 	if (argc != 2)
 	{
 		ft_printf("Error\nInvalid number of input arguments! \
@@ -49,10 +48,9 @@ int32_t	main(int argc, char *argv[])
 		if (check_valid_input(argv[1], princess_game) == 1)
 		{
 			princess_game = game_init(princess_game);
-			princess_game->mlx = mlx_init(princess_game->game_window_size->x, princess_game->game_window_size->y, "Berry Princess Game", true);
-			if (!(princess_game->mlx))
+			if (princess_game == NULL)
 				return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-			set_game_field(princess_game, "textures/strawberry.png");
+				
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
 		}
