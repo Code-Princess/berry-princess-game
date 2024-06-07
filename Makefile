@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/06/07 13:20:25 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ INCL		:=	-I ./MLX42/include
 LIBFTDOTA	:=	libft/libft.a
 SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_helper_functions.c \
 				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c ./so_long_utils/game_functions.c \
+				./so_long_utils/game_textures.c
 				
 OBJS		:=	${SRCS:.c=.o}
 OBJS_DEBUG		:=	${SRCS:.c=_debug.o}

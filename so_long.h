@@ -60,5 +60,5 @@ t_game		*game_init(t_game *game);
 int			gamefield_textures_init(t_game *game);
 int			component_textures_init(t_game *game);
 void		*game_window_init(t_game *game);
-int			textures_to_images_init(t_game *game);
+int			gamefield_textures_to_images_init(t_game *game);
 #endif
