@@ -59,5 +59,6 @@ int			char_in_set(char c, char *set);
 t_game		*game_init(t_game *game);
 // int			load_texture(t_game *game, char *texture_path);
 // int			load_texture(char *texture_path);
-int			images_init(t_game *game);
+int			gamefield_images_init(t_game *game);
+int			component_images_init(t_game *game);
 #endif
