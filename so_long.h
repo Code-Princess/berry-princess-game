@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 17:44:37 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:37:37 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_game
 	t_point			*matrix_size;
 	t_point			*game_window_size;
 	size_t			moves_counter;
-	mlx_image_t		**images;
+	mlx_image_t		**textures;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -57,8 +57,7 @@ t_point		*get_start_position(char **matrix, size_t matrix_len,
 void		write_matrix(char **matrix, size_t height);
 int			char_in_set(char c, char *set);
 t_game		*game_init(t_game *game);
-// int			load_texture(t_game *game, char *texture_path);
-// int			load_texture(char *texture_path);
-int			gamefield_images_init(t_game *game);
-int			component_images_init(t_game *game);
+int			gamefield_textures_init(t_game *game);
+int			component_textures_init(t_game *game);
+void		*game_window_init(t_game *game);
 #endif
