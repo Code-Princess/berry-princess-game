@@ -47,8 +47,6 @@ int	images_init(t_game *game)
 	game->images[0] = mlx_texture_to_image(game->mlx, texture_floor);
 	if (game->images[0] == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	
-		
 	game->images[1] = mlx_load_png("./textures/tree.png");
 	if (game->images[1] == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
