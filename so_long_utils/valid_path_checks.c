@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_path_checks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/07 14:51:23 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 
 void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill)
 {
-	if (current_point->y < 0 || current_point->y >= size->y || \
-		current_point->x < 0 || current_point->x >= size->x || \
+	if (current_point->y >= size->y || \
+		current_point->x >= size->x || \
 		current_point->x >= size->x || \
 		!char_in_set(tab[current_point->y][current_point->x], to_fill))
 		return ;

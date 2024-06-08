@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:31:35 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,14 @@ int	check_valid_input(char *map_path, t_game *game)
 	char	*valid_map_elements;
 	t_point	*start_position;
 	char	*components_to_reach;
+	char	**map_data_cpy;
 
 	valid_map_elements = "CEP01";
 	components_to_reach = "CEP";
 	if (check_valid_filetype(map_path) == 0)
 		return (ft_printf("Error\nInvalid map file extension! \
 		Use .ber-file\n"), 0);
-		game->map_data = read_map_file(map_path, game);
+	game->map_data = read_map_file(map_path, game);
 	if (game->map_data == NULL)
 		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
 	game->matrix_size = malloc(1 * sizeof(t_point));
@@ -124,7 +125,10 @@ int	check_valid_input(char *map_path, t_game *game)
 		return (0);
 	start_position = get_start_position(game->map_data, game->matrix_size->x, \
 	game->matrix_size->y);
-	if (check_valid_flood_fill_path(game->map_data, game->matrix_size, start_position, \
+	map_data_cpy = copy_matrix(game->map_data, game->matrix_size->y);
+	if (map_data_cpy == NULL)
+		return (0);
+	if (check_valid_flood_fill_path(map_data_cpy, game->matrix_size, start_position, \
 	components_to_reach) == 0)
 		return (0);
 	return (1);

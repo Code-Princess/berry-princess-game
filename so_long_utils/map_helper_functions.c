@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_helper_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:28:42 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,19 @@ void	write_matrix(char **matrix, size_t height)
 		ft_putendl_fd(matrix[y], 1);
 		y++;
 	}
+}
+
+char **copy_matrix(char **matrix, size_t height)
+{
+	char **matrix_copied;
+	size_t y;
+	
+	matrix_copied = malloc(height * sizeof(char *));
+	y = 0;
+	while (y < height)
+	{
+		matrix_copied[y] = ft_strdup(matrix[y]);
+		y++;
+	}
+	return (matrix_copied);
 }

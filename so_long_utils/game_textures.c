@@ -3,22 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   game_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/07 13:22:49 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:44:29 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include "../libft/libft.h"
 
 int	gamefield_textures_init(t_game *game)
 {
-	mlx_texture_t	*texture_floor;
-	mlx_texture_t	*texture_tree;
-	mlx_texture_t	*texture_castle_color;
-	mlx_texture_t	*texture_castle_grey;
-
 	game->textures = malloc(5 * sizeof(mlx_image_t));
 	if (game->textures == NULL)
 		return (0);
@@ -34,14 +30,6 @@ int	gamefield_textures_init(t_game *game)
 	game->textures[3] = mlx_load_png("./textures/castle_color.png");
 	if (game->textures[3] == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	return (1);
-}
-
-int	component_textures_init(t_game *game)
-{
-	mlx_texture_t	*texture_strawberry;
-	mlx_texture_t	*texture_princess;
-
 	game->textures[4] = mlx_load_png("./textures/princess.png");
 	if (game->textures[4] == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
@@ -53,40 +41,63 @@ int	component_textures_init(t_game *game)
 
 int	gamefield_textures_to_images_init(t_game *game)
 {
-	mlx_image_t		*image_floor;
-	mlx_image_t		*image_tree;
-	mlx_image_t		*image_castle_color;
-	mlx_image_t		*image_castle_grey;
+	game->image_floor = mlx_texture_to_image(game->mlx, game->textures[0]);
+	if (game->image_floor == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	game->image_tree = mlx_texture_to_image(game->mlx, game->textures[1]);
+	if (game->image_tree == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	game->image_castle_grey = mlx_texture_to_image(game->mlx, game->textures[2]);
+	if (game->image_castle_grey == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	game->image_castle_color = mlx_texture_to_image(game->mlx, game->textures[3]);
+	if (game->image_castle_color == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	game->image_princess = mlx_texture_to_image(game->mlx, game->textures[4]);
+	if (game->image_princess == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	game->image_strawberry = mlx_texture_to_image(game->mlx, game->textures[5]);
+	if (game->image_strawberry == NULL)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	return (1);
+}
+int set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
+{
+	size_t x;
+	size_t y;
 
-	image_floor = malloc(1 * sizeof(mlx_image_t));
-	image_floor = mlx_texture_to_image(game->mlx, game->textures[0]);
-	if (image_floor == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	image_tree = mlx_texture_to_image(game->mlx, game->textures[1]);
-	if (image_tree == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	image_castle_grey = mlx_texture_to_image(game->mlx, game->textures[2]);
-	if (image_castle_grey == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	image_castle_color = mlx_texture_to_image(game->mlx, game->textures[3]);
-	if (image_castle_color == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	// if (mlx_image_to_window(game->mlx, img, 0, 0) < 0)
-	// 	return (0);
-	// mlx_loop(game->mlx);
+	y = 0;
+	while (y < game->matrix_size->y)
+	{
+		x = 0;
+		while (x < game->matrix_size->x)
+		{
+			if (game->map_data[y][x] == c)
+				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, y * game->pixels_per_tile);
+			x++;
+		}
+		y++;
+	}
 	return (1);
 }
 
-int	component_textures_to_images_init(t_game *game)
+void *gamefield_init(t_game *game)
 {
-	mlx_image_t		*image_strawberry;
-	mlx_image_t		*image_princess;
-
-	image_princess = mlx_texture_to_image(game->mlx, game->textures[4]);
-	if (image_princess == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	image_strawberry = mlx_texture_to_image(game->mlx, game->textures[5]);
-	if (image_strawberry == NULL)
-		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	return (1);
+	if (gamefield_textures_init(game) == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (gamefield_textures_to_images_init(game) == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (set_images_on_gamefield(game, game->image_floor, '0') == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (set_images_on_gamefield(game, game->image_tree, '1') == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (set_images_on_gamefield(game, game->image_strawberry, 'C') == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (set_images_on_gamefield(game, game->image_castle_grey, 'E') == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+	if (set_images_on_gamefield(game, game->image_princess, 'P') == 0)
+		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
+printf("game->matrix_size->y %zu\n", game->matrix_size->y);
+printf("game->matrix_size->x %zu\n", game->matrix_size->x);
+	return (game);
 }

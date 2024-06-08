@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/07 13:05:52 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/08 18:18:30 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,15 @@ typedef struct s_game
 	char			**map_data;
 	t_point			*matrix_size;
 	t_point			*game_window_size;
+	size_t			pixels_per_tile;
 	size_t			moves_counter;
-	mlx_image_t		**textures;
+	mlx_texture_t	**textures;
+	mlx_image_t		*image_floor;
+	mlx_image_t		*image_tree;
+	mlx_image_t		*image_castle_color;
+	mlx_image_t		*image_castle_grey;
+	mlx_image_t		*image_strawberry;
+	mlx_image_t		*image_princess;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -58,7 +65,10 @@ void		write_matrix(char **matrix, size_t height);
 int			char_in_set(char c, char *set);
 t_game		*game_init(t_game *game);
 int			gamefield_textures_init(t_game *game);
-int			component_textures_init(t_game *game);
-void		*game_window_init(t_game *game);
+t_game		*game_window_init(t_game *game);
 int			gamefield_textures_to_images_init(t_game *game);
+void		*gamefield_init(t_game *game);
+int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
+char		**copy_matrix(char **matrix, size_t height);
+
 #endif
