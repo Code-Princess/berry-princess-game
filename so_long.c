@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/06 17:58:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:09:14 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int32_t	main(int argc, char *argv[])
 			princess_game = game_init(princess_game);
 			if (princess_game == NULL)
 				return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-				
+
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
 		}
