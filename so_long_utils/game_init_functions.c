@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_functions.c                                   :+:      :+:    :+:   */
+/*   game_init_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 18:19:51 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/10 18:21:26 by linda            ###   ########.fr       */
+/*   Created: 2024/06/11 10:53:52 by linda             #+#    #+#             */
+/*   Updated: 2024/06/11 13:28:13 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_game	*game_init(t_game *game)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (gamefield_init(game) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
-	mlx_loop(game->mlx);
 	return (game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/08 18:18:30 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/11 13:23:51 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ int			gamefield_textures_to_images_init(t_game *game);
 void		*gamefield_init(t_game *game);
 int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
 char		**copy_matrix(char **matrix, size_t height);
+void		move_hooks(void *game_parameter);
+void		hook_functions(void *game_parameter);
+void key_event(mlx_key_data_t keydata, void* param);
 
 #endif
