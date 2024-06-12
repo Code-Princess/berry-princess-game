@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/11 13:23:51 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/12 14:08:37 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,12 @@ int			gamefield_textures_to_images_init(t_game *game);
 void		*gamefield_init(t_game *game);
 int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
 char		**copy_matrix(char **matrix, size_t height);
-void		move_hooks(void *game_parameter);
+void		move_princess_hooks(void *game_parameter);
 void		hook_functions(void *game_parameter);
-void key_event(mlx_key_data_t keydata, void* param);
+int			pre_check_wall_up (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_down (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_left (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_right (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
+void		escape_close_window(void *game_parameter);
 
 #endif
