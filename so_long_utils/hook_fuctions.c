@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/12 16:09:27 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/12 18:19:57 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void move_princess_hooks(void *game_parameter)
     move_step_up_down = game->pixels_per_tile / 30;
     move_step_left_right = game->pixels_per_tile / 40;
     if (mlx_is_key_down(game->mlx, MLX_KEY_UP) == 1 || mlx_is_key_down(game->mlx, MLX_KEY_W) == 1)
-       if (pre_check_wall_up (game->image_princess->instances, game->pixels_per_tile, game->map_data) == 0)
-            game->image_princess->instances[0].y -= move_step_up_down; 
+    {
+        if (pre_check_wall_up (game->image_princess->instances, game->pixels_per_tile, game->map_data) == 0)
+        game-> image_princess->instances[0].y -= move_step_up_down; 
+    }
     if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN) == 1 || mlx_is_key_down(game->mlx, MLX_KEY_S) == 1)
     {
        if (pre_check_wall_down (game->image_princess->instances, game->pixels_per_tile, game->map_data) == 0)
