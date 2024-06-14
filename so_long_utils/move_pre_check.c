@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:38:44 by linda             #+#    #+#             */
-/*   Updated: 2024/06/14 21:55:26 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/14 23:11:47 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	pre_check_wall_up(mlx_instance_t *img_instances, size_t amount_tile_pixels,
 	idx_y_1 = img_instances[0].y / amount_tile_pixels;
 printf("up\n");
 printf("img_instances[0].x: %d, img_instances[0].y: %d\n", img_instances[0].x, img_instances[0].y);
-	if (matrix[idx_y_1][idx_x_1] == '1')
+	if (matrix[idx_y_1 - 1][idx_x_1] == '1')
 		return (1);
 	else
 		return (0);
@@ -57,7 +57,7 @@ int	pre_check_wall_left(mlx_instance_t *img_instances,
 	idx_y_1 = img_instances[0].y / amount_tile_pixels;
 printf("left\n");
 printf("img_instances[0].x: %d, img_instances[0].y: %d\n", img_instances[0].x, img_instances[0].y);
-	if (matrix[idx_y_1][idx_x_1] == '1')
+	if (matrix[idx_y_1][idx_x_1 - 1] == '1')
 		return (1);
 	else
 		return (0);

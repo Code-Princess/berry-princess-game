@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/14 21:42:24 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 00:15:05 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,22 @@ void	move_up_down_princess_hooks(void *game_parameter)
 	size_t	move_step;
 
 	game = game_parameter;
-	move_step = 2;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_UP) == 1
-		|| mlx_is_key_down(game->mlx, MLX_KEY_W) == 1)
+	move_step = game->pixels_per_tile;
+	if ((mlx_is_key_down(game->mlx, MLX_KEY_UP) == 1
+		|| mlx_is_key_down(game->mlx, MLX_KEY_W) == 1))
 	{
+		game->key_pressed = 1;
 		if (pre_check_wall_up(game->image_princess->instances,
 				game->pixels_per_tile, game->map_data) == 0)
 			game->image_princess->instances[0].y -= move_step;
 	}
-	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN) == 1
-		|| mlx_is_key_down(game->mlx, MLX_KEY_S) == 1)
-	{
+	if ((mlx_is_key_down(game->mlx, MLX_KEY_DOWN) == 1
+		|| mlx_is_key_down(game->mlx, MLX_KEY_S) == 1))
+	{	
 		if (pre_check_wall_down(game->image_princess->instances,
 				game->pixels_per_tile, game->map_data) == 0)
 			game->image_princess->instances[0].y += move_step;
+			game->key_pressed = 1;
 	}
 }
 
@@ -51,7 +53,7 @@ void	move_left_right_princess_hooks(void *game_parameter)
 	size_t	move_step;
 
 	game = game_parameter;
-	move_step = 2;
+	move_step = game->pixels_per_tile;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT) == 1
 		|| mlx_is_key_down(game->mlx, MLX_KEY_A) == 1)
 	{
@@ -70,6 +72,9 @@ void	move_left_right_princess_hooks(void *game_parameter)
 
 void	hook_functions(void *game_parameter)
 {
+	t_game *game;
+
+	game = game_parameter; 
 	escape_close_window(game_parameter);
 	move_up_down_princess_hooks(game_parameter);
 	move_left_right_princess_hooks(game_parameter);

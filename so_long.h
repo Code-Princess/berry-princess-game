@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/14 19:44:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/14 23:52:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_game
 	mlx_image_t		*image_castle_grey;
 	mlx_image_t		*image_strawberry;
 	mlx_image_t		*image_princess;
+	size_t			key_pressed;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/14 18:06:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 00:14:12 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int32_t	main(int argc, char *argv[])
 	t_game				*princess_game;
 
 	if (argc != 2)
-		ft_printf("Error\nInvalid number of input arguments!"
+		ft_printf("Error\nInvalid number of input arguments!" \
 		"Use: ./so_long map.ber\n");
 	else
 	{
