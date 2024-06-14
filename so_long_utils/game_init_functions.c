@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:53:52 by linda             #+#    #+#             */
-/*   Updated: 2024/06/11 13:28:13 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/14 18:16:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_game	*game_init(t_game *game)
 
 t_game	*game_window_init(t_game *game)
 {
-	game->pixels_per_tile = 50;
+	game->pixels_per_tile = 40;
 	game->game_window_size = malloc(1 * sizeof(t_point));
 	game->game_window_size->x = game->matrix_size->x * game->pixels_per_tile;
 	game->game_window_size->y = (game->matrix_size->y + 1) * game->pixels_per_tile;

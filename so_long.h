@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/12 14:08:37 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/14 18:34:05 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			gamefield_textures_init(t_game *game);
 t_game		*game_window_init(t_game *game);
 int			gamefield_textures_to_images_init(t_game *game);
 void		*gamefield_init(t_game *game);
+int			set_gamefield_floor(t_game *game, mlx_image_t *img);
 int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
 char		**copy_matrix(char **matrix, size_t height);
 void		move_princess_hooks(void *game_parameter);

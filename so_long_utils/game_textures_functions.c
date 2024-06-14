@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_textures_functions.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/11 10:55:49 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/14 18:33:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,31 @@ int set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
 	}
 	return (1);
 }
+int set_gamefield_floor(t_game *game, mlx_image_t *img)
+{
+	size_t x;
+	size_t y;
 
+	y = 0;
+	while (y < game->matrix_size->y)
+	{
+		x = 0;
+		while (x < game->matrix_size->x)
+		{
+				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, y * game->pixels_per_tile);
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
 void *gamefield_init(t_game *game)
 {
 	if (gamefield_textures_init(game) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (gamefield_textures_to_images_init(game) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
-	if (set_images_on_gamefield(game, game->image_floor, '0') == 0)
+	if (set_gamefield_floor(game, game->image_floor) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (set_images_on_gamefield(game, game->image_tree, '1') == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);

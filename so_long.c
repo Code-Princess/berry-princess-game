@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/11 17:41:48 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/14 18:06:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int32_t	main(int argc, char *argv[])
 	t_game				*princess_game;
 
 	if (argc != 2)
-		ft_printf("Error\nInvalid number of input arguments! \
-		Use: ./so_long map.ber\n");
+		ft_printf("Error\nInvalid number of input arguments!"
+		"Use: ./so_long map.ber\n");
 	else
 	{
 		princess_game = malloc(1 * sizeof(t_game));
