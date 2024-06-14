@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/14 19:15:26 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:42:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	escape_close_window(void *game_parameter)
 		mlx_close_window(game->mlx);
 }
 
-void	move_princess_hooks(void *game_parameter)
+void	move_up_down_princess_hooks(void *game_parameter)
 {
 	t_game	*game;
 	size_t	move_step;
 
 	game = game_parameter;
-	move_step = 3;
+	move_step = 2;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP) == 1
 		|| mlx_is_key_down(game->mlx, MLX_KEY_W) == 1)
 	{
@@ -43,6 +43,15 @@ void	move_princess_hooks(void *game_parameter)
 				game->pixels_per_tile, game->map_data) == 0)
 			game->image_princess->instances[0].y += move_step;
 	}
+}
+
+void	move_left_right_princess_hooks(void *game_parameter)
+{
+	t_game	*game;
+	size_t	move_step;
+
+	game = game_parameter;
+	move_step = 2;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT) == 1
 		|| mlx_is_key_down(game->mlx, MLX_KEY_A) == 1)
 	{
@@ -62,5 +71,6 @@ void	move_princess_hooks(void *game_parameter)
 void	hook_functions(void *game_parameter)
 {
 	escape_close_window(game_parameter);
-	move_princess_hooks(game_parameter);
+	move_up_down_princess_hooks(game_parameter);
+	move_left_right_princess_hooks(game_parameter);
 }
