@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/14 18:34:05 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:05:21 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,14 @@ int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
 char		**copy_matrix(char **matrix, size_t height);
 void		move_princess_hooks(void *game_parameter);
 void		hook_functions(void *game_parameter);
-int			pre_check_wall_up (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
-int			pre_check_wall_down (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
-int			pre_check_wall_left (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
-int			pre_check_wall_right (mlx_instance_t *img_instances, size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_up(mlx_instance_t *img_instances, \
+				size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_down(mlx_instance_t	*img_instances, \
+				size_t amount_tile_pixels, char	**matrix);
+int			pre_check_wall_left(mlx_instance_t *img_instances, \
+				size_t amount_tile_pixels, char **matrix);
+int			pre_check_wall_right(mlx_instance_t *img_instances, \
+				size_t amount_tile_pixels, char **matrix);
 void		escape_close_window(void *game_parameter);
 
 #endif
