@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 01:32:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 01:37:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,4 @@ void	hook_functions(void *game_parameter)
 	escape_close_window(game_parameter);
 	move_up_down_princess_hooks(game_parameter);
 	move_left_right_princess_hooks(game_parameter);
-	//fake push
 }
