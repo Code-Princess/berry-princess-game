@@ -6,14 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:38:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 17:05:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
 
-int32_t	main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_game				*princess_game;
 
@@ -33,7 +33,7 @@ int32_t	main(int argc, char *argv[])
 			mlx_terminate(princess_game->mlx);
 		}
 		else
-			return (EXIT_FAILURE);
+			return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:48:08 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 16:25:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int			pre_check_wall_right(mlx_instance_t *img_instances, \
 				size_t amount_tile_pixels, char **matrix);
 void		escape_close_window(void *game_parameter);
 int			get_map_data(char *map_path, t_game *game);
+void		print_moves_counter(void *game_parameter);
 
 #endif
