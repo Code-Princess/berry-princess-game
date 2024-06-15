@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 13:14:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:33:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int	get_map_data(char *map_path, t_game *game)
 	game->matrix_size = malloc(1 * sizeof(t_point));
 	if (game->matrix_size == NULL)
 		return (0);
+	if (game->map_data[0] == (void *)0)
+		return (ft_printf("Error\nYour .ber-file is empty!\n"), 0);
 	game->matrix_size->x = ft_strlen(game->map_data[0]);
 	game->matrix_size->y = get_row_count(map_path);
 	return (1);
