@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 15:03:25 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:29:04 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,18 @@ void	move_left_right_princess_hooks(mlx_key_data_t keydata,
 	}
 }
 
+void	print_moves_counter(void *game_parameter)
+{
+	t_game				*game;
+	static mlx_image_t	*string;
+
+	game = game_parameter;
+	mlx_delete_image(game->mlx, string);
+	string = mlx_put_string(game->mlx, ft_itoa(game->moves_counter), \
+		game->pixels_per_tile + game->pixels_per_tile, \
+		game->matrix_size->y * game->pixels_per_tile + 5);
+}
+
 void	hook_functions(mlx_key_data_t keydata, void *game_parameter)
 {
 	t_game	*game;
@@ -89,5 +101,7 @@ void	hook_functions(mlx_key_data_t keydata, void *game_parameter)
 	game = game_parameter;
 	escape_close_window(game_parameter);
 	move_up_down_princess_hooks(keydata, game_parameter);
+	print_moves_counter(game_parameter);
 	move_left_right_princess_hooks(keydata, game_parameter);
+	print_moves_counter(game_parameter);
 }
