@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 17:43:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 18:34:00 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	escape_close_window(void *game_parameter)
 		mlx_close_window(game->mlx);
 }
 
-void	collect_berries(void *game_parameter)
+void	collect_berries(mlx_key_data_t keydata, void *game_parameter)
 {
 	t_game	*game;
 	size_t	idx_x;
@@ -40,10 +40,25 @@ void	collect_berries(void *game_parameter)
 			if (idx_x == (size_t)game->image_strawberry->instances[i].x / \
 				game->pixels_per_tile && \
 				idx_y == (size_t)game->image_strawberry->instances[i].y / \
-				game->pixels_per_tile)
+				game->pixels_per_tile && keydata.action == MLX_RELEASE)
+			{
 				game->image_strawberry->instances[i].enabled = false;
+				game->collected_berries_counter++;
+			}
 			i++;
 		}
+	}
+}
+
+void	exit_castle(void *game_parameter)
+{
+	t_game	*game;
+
+	game = game_parameter;
+	if (game->collected_berries_counter == (int)game->image_strawberry->count)
+	{
+		mlx_delete_image(game->mlx, game->image_castle_grey);
+		set_images_on_gamefield(game, game->image_castle_color, 'E');
 	}
 }
 
@@ -54,5 +69,6 @@ void	hook_functions(mlx_key_data_t keydata, void *game_parameter)
 	print_moves_counter(game_parameter);
 	move_left_right_princess_hooks(keydata, game_parameter);
 	print_moves_counter(game_parameter);
-	collect_berries(game_parameter);
+	collect_berries(keydata, game_parameter);
+	exit_castle(game_parameter);
 }

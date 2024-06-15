@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 16:25:15 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 18:33:46 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_game
 	mlx_image_t		*image_castle_grey;
 	mlx_image_t		*image_strawberry;
 	mlx_image_t		*image_princess;
+	int				collected_berries_counter;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -87,5 +88,7 @@ int			pre_check_wall_right(mlx_instance_t *img_instances, \
 void		escape_close_window(void *game_parameter);
 int			get_map_data(char *map_path, t_game *game);
 void		print_moves_counter(void *game_parameter);
+void		collect_berries(mlx_key_data_t keydata, void *game_parameter);
+void		exit_castle(void *game_parameter);
 
 #endif

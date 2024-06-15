@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:46:09 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 17:53:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	set_gamefield_floor(t_game *game, mlx_image_t *img)
 
 void	*gamefield_init(t_game *game)
 {
+	game->collected_berries_counter = 0;
 	if (gamefield_textures_init(game) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (gamefield_textures_to_images_init(game) == 0)
