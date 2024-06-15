@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:53:52 by linda             #+#    #+#             */
-/*   Updated: 2024/06/14 23:53:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 12:32:54 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_game	*game_window_init(t_game *game)
 	game->game_window_size->y = (game->matrix_size->y + 1) * \
 		game->pixels_per_tile;
 	game->moves_counter = 0;
-	game->key_pressed = 0;
 	game->mlx = mlx_init(game->game_window_size->x, game->game_window_size->y,
 			"Berry-Princess-Game", true);
 	if (game->mlx == NULL)

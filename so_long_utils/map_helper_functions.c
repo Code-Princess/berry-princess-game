@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_helper_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/08 18:28:42 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/15 13:16:47 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
-# include <fcntl.h>
+#include "../MLX42/include/MLX42/MLX42.h"
+#include "../libft/libft.h"
+#include <fcntl.h>
 
 size_t	get_row_count(char *filepath)
 {
@@ -63,11 +63,11 @@ void	write_matrix(char **matrix, size_t height)
 	}
 }
 
-char **copy_matrix(char **matrix, size_t height)
+char	**copy_matrix(char **matrix, size_t height)
 {
-	char **matrix_copied;
-	size_t y;
-	
+	char	**matrix_copied;
+	size_t	y;
+
 	matrix_copied = malloc(height * sizeof(char *));
 	y = 0;
 	while (y < height)

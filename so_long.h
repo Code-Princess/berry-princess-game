@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/14 23:52:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 13:12:51 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_game
 	mlx_image_t		*image_castle_grey;
 	mlx_image_t		*image_strawberry;
 	mlx_image_t		*image_princess;
-	size_t			key_pressed;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -72,9 +71,11 @@ void		*gamefield_init(t_game *game);
 int			set_gamefield_floor(t_game *game, mlx_image_t *img);
 int			set_images_on_gamefield(t_game *game, mlx_image_t *img, char c);
 char		**copy_matrix(char **matrix, size_t height);
-void		move_up_down_princess_hooks(void *game_parameter);
-void		move_left_right_princess_hooks(void *game_parameter);
-void		hook_functions(void *game_parameter);
+void		move_up_down_princess_hooks(mlx_key_data_t keydata, \
+			void *game_parameter);
+void		move_left_right_princess_hooks(mlx_key_data_t keydata, \
+			void *game_parameter);
+void		hook_functions(mlx_key_data_t keydata, void *game_parameter);
 int			pre_check_wall_up(mlx_instance_t *img_instances, \
 				size_t amount_tile_pixels, char **matrix);
 int			pre_check_wall_down(mlx_instance_t	*img_instances, \
@@ -84,5 +85,6 @@ int			pre_check_wall_left(mlx_instance_t *img_instances, \
 int			pre_check_wall_right(mlx_instance_t *img_instances, \
 				size_t amount_tile_pixels, char **matrix);
 void		escape_close_window(void *game_parameter);
+int			get_map_data(char *map_path, t_game *game);
 
 #endif

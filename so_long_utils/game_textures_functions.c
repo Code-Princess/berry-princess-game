@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 00:09:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 12:46:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ int	gamefield_textures_to_images_init(t_game *game)
 	game->image_tree = mlx_texture_to_image(game->mlx, game->textures[1]);
 	if (game->image_tree == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	game->image_castle_grey = mlx_texture_to_image(game->mlx, game->textures[2]);
+	game->image_castle_grey = mlx_texture_to_image(game->mlx, \
+	game->textures[2]);
 	if (game->image_castle_grey == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-	game->image_castle_color = mlx_texture_to_image(game->mlx, game->textures[3]);
+	game->image_castle_color = mlx_texture_to_image(game->mlx, \
+	game->textures[3]);
 	if (game->image_castle_color == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
 	game->image_princess = mlx_texture_to_image(game->mlx, game->textures[4]);
@@ -61,10 +63,11 @@ int	gamefield_textures_to_images_init(t_game *game)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
 	return (1);
 }
-int set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
+
+int	set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
 {
-	size_t x;
-	size_t y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < game->matrix_size->y)
@@ -73,17 +76,19 @@ int set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
 		while (x < game->matrix_size->x)
 		{
 			if (game->map_data[y][x] == c)
-				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, y * game->pixels_per_tile);
+				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, \
+				y * game->pixels_per_tile);
 			x++;
 		}
 		y++;
 	}
 	return (1);
 }
-int set_gamefield_floor(t_game *game, mlx_image_t *img)
+
+int	set_gamefield_floor(t_game *game, mlx_image_t *img)
 {
-	size_t x;
-	size_t y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < game->matrix_size->y)
@@ -91,14 +96,16 @@ int set_gamefield_floor(t_game *game, mlx_image_t *img)
 		x = 0;
 		while (x < game->matrix_size->x)
 		{
-				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, y * game->pixels_per_tile);
+			mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, \
+			y * game->pixels_per_tile);
 			x++;
 		}
 		y++;
 	}
 	return (1);
 }
-void *gamefield_init(t_game *game)
+
+void	*gamefield_init(t_game *game)
 {
 	if (gamefield_textures_init(game) == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
@@ -114,7 +121,8 @@ void *gamefield_init(t_game *game)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (set_images_on_gamefield(game, game->image_princess, 'P') == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
-	if (mlx_put_string(game->mlx, "move counts: ", game->pixels_per_tile / 3, game->matrix_size->y * game->pixels_per_tile + 5) == NULL)
+	if (mlx_put_string(game->mlx, "move counts: ", game->pixels_per_tile / 3, \
+		game->matrix_size->y * game->pixels_per_tile + 5) == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	return (game);
 }

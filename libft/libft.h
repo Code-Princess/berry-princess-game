@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:19:44 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/05 20:10:20 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 12:44:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ft_strjoin_modified(char *s1, char *s2, int s2_len);
 char	*read_from_fd_into_buffer(int fd, char *buffer);
 char	*adjust_buffer(char *old_buffer);
 char	*get_next_line(int fd);
-char 	**ft_split_modified(char const *s, char c, t_game *game);
+char	**ft_split_modified(char const *s, char c, t_game *game);
 void	ft_putstr_fd_modified(const char *s, int fd);
 
 #endif

@@ -3,31 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/08 18:31:35 by linda            ###   ########.fr       */
+/*   Updated: 2024/06/15 13:14:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
-# include <fcntl.h>
-
-int	check_valid_filetype(char	*filepath)
-{
-	size_t	i;
-
-	i = ft_strlen(filepath) - 1;
-	if (filepath[i - 3] == '.' && filepath[i - 2] == 'b'
-		&& filepath[i - 1] == 'e' && filepath[i] == 'r')
-	{
-		return (1);
-	}
-	else
-		return (0);
-}
+#include "../MLX42/include/MLX42/MLX42.h"
+#include "../libft/libft.h"
+#include <fcntl.h>
 
 char	**read_map_file(char *filepath, t_game *game)
 {
@@ -110,16 +96,10 @@ int	check_valid_input(char *map_path, t_game *game)
 	valid_map_elements = "CEP01";
 	components_to_reach = "CEP";
 	if (check_valid_filetype(map_path) == 0)
-		return (ft_printf("Error\nInvalid map file extension! \
-		Use .ber-file\n"), 0);
-	game->map_data = read_map_file(map_path, game);
-	if (game->map_data == NULL)
-		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
-	game->matrix_size = malloc(1 * sizeof(t_point));
-	if (game->matrix_size == NULL)
+		return (ft_printf("Error\nInvalid map file extension! " \
+		"Use .ber-file\n"), 0);
+	if (get_map_data(map_path, game) == 0)
 		return (0);
-	game->matrix_size->x = ft_strlen(game->map_data[0]);
-	game->matrix_size->y = get_row_count(map_path);
 	if (check_valid_map(valid_map_elements, \
 	game->map_data, game->matrix_size->x, game->matrix_size->y) == 0)
 		return (0);
@@ -128,8 +108,21 @@ int	check_valid_input(char *map_path, t_game *game)
 	map_data_cpy = copy_matrix(game->map_data, game->matrix_size->y);
 	if (map_data_cpy == NULL)
 		return (0);
-	if (check_valid_flood_fill_path(map_data_cpy, game->matrix_size, start_position, \
-	components_to_reach) == 0)
+	if (check_valid_flood_fill_path(map_data_cpy, game->matrix_size, \
+	start_position, components_to_reach) == 0)
 		return (0);
+	return (1);
+}
+
+int	get_map_data(char *map_path, t_game *game)
+{
+	game->map_data = read_map_file(map_path, game);
+	if (game->map_data == NULL)
+		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
+	game->matrix_size = malloc(1 * sizeof(t_point));
+	if (game->matrix_size == NULL)
+		return (0);
+	game->matrix_size->x = ft_strlen(game->map_data[0]);
+	game->matrix_size->y = get_row_count(map_path);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:19:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/04 11:47:52 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 12:43:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*cpyaword(char const *s, int start, int end);
 static void	*free_memory(char **strings, int count);
 static void	init_vars(size_t *i, int *result_index, int *word_start_index);
 
-char **	ft_split_modified(char const *s, char c, t_game *game)
+char	**ft_split_modified(char const *s, char c, t_game *game)
 {
 	size_t	i;
 	int		result_index;

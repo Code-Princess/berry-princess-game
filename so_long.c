@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 00:14:12 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 12:40:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int32_t	main(int argc, char *argv[])
 			princess_game = game_init(princess_game);
 			if (princess_game == NULL)
 				return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
-			mlx_loop_hook(princess_game->mlx, hook_functions, princess_game);
+			mlx_key_hook(princess_game->mlx, &hook_functions, princess_game);
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
 		}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/12 12:39:15 by linda            ###   ########.fr        #
+#    Updated: 2024/06/15 13:05:09 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBFTDOTA	:=	libft/libft.a
 SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_helper_functions.c \
 				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c ./so_long_utils/game_init_functions.c \
 				./so_long_utils/game_textures_functions.c ./so_long_utils/hook_fuctions.c ./so_long_utils/move_pre_check.c \
+				./so_long_utils/filetype_check.c
 				
 OBJS		:=	${SRCS:.c=.o}
 OBJS_DEBUG		:=	${SRCS:.c=_debug.o}
