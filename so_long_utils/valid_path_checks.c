@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 23:00:10 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:19:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	free_matrix_and_begin_pos(char **matrix, \
 	t_point *matrix_size, t_point *begin_pos)
 {
-	int	y;
+	size_t	y;
 
 	y = 0;
 	while (y < matrix_size->y)
