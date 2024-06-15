@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 20:47:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:57:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void	exit_castle(void *game_parameter)
 	if (game->map_data[idx_y][idx_x] == 'E' && \
 	game->collected_berries_counter >= (int)game->image_strawberry->count)
 	{
+		game->image_princess->instances[0].enabled = false;
 		ft_printf("+-------------+\n");
 		ft_printf("| * YOU WON * |\n");
 		ft_printf("+-------------+\n");
 		mlx_put_string(game->mlx, "YOU WON", game->pixels_per_tile / 3, \
 		(game->matrix_size->y + 1) * game->pixels_per_tile + 5);
-		mlx_delete_image(game->mlx, game->image_princess);
 	}
 }
 
