@@ -6,12 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 18:34:00 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:47:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <stdio.h>
+#include "../libft/libft.h"
 
 void	escape_close_window(void *game_parameter)
 {
@@ -53,12 +53,26 @@ void	collect_berries(mlx_key_data_t keydata, void *game_parameter)
 void	exit_castle(void *game_parameter)
 {
 	t_game	*game;
+	size_t	idx_x;
+	size_t	idx_y;
 
 	game = game_parameter;
+	idx_x = game->image_princess->instances[0].x / game->pixels_per_tile;
+	idx_y = game->image_princess->instances[0].y / game->pixels_per_tile;
 	if (game->collected_berries_counter == (int)game->image_strawberry->count)
 	{
 		mlx_delete_image(game->mlx, game->image_castle_grey);
 		set_images_on_gamefield(game, game->image_castle_color, 'E');
+	}
+	if (game->map_data[idx_y][idx_x] == 'E' && \
+	game->collected_berries_counter >= (int)game->image_strawberry->count)
+	{
+		ft_printf("+-------------+\n");
+		ft_printf("| * YOU WON * |\n");
+		ft_printf("+-------------+\n");
+		mlx_put_string(game->mlx, "YOU WON", game->pixels_per_tile / 3, \
+		(game->matrix_size->y + 1) * game->pixels_per_tile + 5);
+		mlx_delete_image(game->mlx, game->image_princess);
 	}
 }
 
