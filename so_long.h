@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 13:12:51 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:48:08 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_game
 	t_point			*matrix_size;
 	t_point			*game_window_size;
 	size_t			pixels_per_tile;
-	size_t			moves_counter;
+	int				moves_counter;
 	mlx_texture_t	**textures;
 	mlx_image_t		*image_floor;
 	mlx_image_t		*image_tree;

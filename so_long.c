@@ -6,13 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 12:40:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:38:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
-#include "MLX42/include/MLX42/MLX42.h"
 
 int32_t	main(int argc, char *argv[])
 {

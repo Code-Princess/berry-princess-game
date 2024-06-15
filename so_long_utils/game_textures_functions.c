@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 12:46:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:46:09 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	*gamefield_init(t_game *game)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (set_images_on_gamefield(game, game->image_princess, 'P') == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
-	if (mlx_put_string(game->mlx, "move counts: ", game->pixels_per_tile / 3, \
+	if (mlx_put_string(game->mlx, "MOVES: ", game->pixels_per_tile / 3, \
 		game->matrix_size->y * game->pixels_per_tile + 5) == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	return (game);

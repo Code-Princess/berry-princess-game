@@ -6,12 +6,11 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:38:44 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 12:32:21 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:37:12 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <stdio.h>
 
 int	pre_check_wall_up(mlx_instance_t *img_instances, size_t amount_tile_pixels,
 		char **matrix)

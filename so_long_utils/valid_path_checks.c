@@ -6,12 +6,11 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 13:17:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:40:35 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include "../MLX42/include/MLX42/MLX42.h"
 #include "../libft/libft.h"
 
 int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
