@@ -6,12 +6,26 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 17:05:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 22:30:53 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
+
+void	free_princess_game(t_game *game)
+{
+	free(game->game_window_size);
+	free(game->matrix_size);
+	free(game->textures[0]);
+	free(game->textures[1]);
+	free(game->textures[2]);
+	free(game->textures[3]);
+	free(game->textures[4]);
+	free(game->textures[5]);
+	free(game->textures);
+	
+}
 
 int	main(int argc, char *argv[])
 {
@@ -31,6 +45,7 @@ int	main(int argc, char *argv[])
 			mlx_key_hook(princess_game->mlx, &hook_functions, princess_game);
 			mlx_loop(princess_game->mlx);
 			mlx_terminate(princess_game->mlx);
+			free_princess_game(princess_game);
 		}
 		else
 			return (1);

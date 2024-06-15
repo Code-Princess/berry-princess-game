@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 22:08:33 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:38:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/15 22:40:46 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t map_len, size_t map_height)
 		matrix, map_len, map_height);
 		i++;
 	}
-	if (comp_counts[0] < 1 || comp_counts[1] != 1 || comp_counts[1] != 1)
+	if (comp_counts[0] < 1 || comp_counts[1] != 1 || comp_counts[2] != 1)
 		return (free(comp_counts), comp_counts = NULL, 0);
 	else
 		return (free(comp_counts), comp_counts = NULL, 1);
