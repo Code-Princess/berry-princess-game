@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/15 16:23:46 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/06/16 21:34:52 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,25 @@ MLX42_URL	= https://github.com/codam-coding-college/MLX42.git
 INCL		:=	-I ./MLX42/include
 
 LIBFTDOTA	:=	libft/libft.a
-SRCS		:=	so_long.c ./so_long_utils/map_checks.c ./so_long_utils/map_helper_functions.c \
-				./so_long_utils/components_checks.c ./so_long_utils/valid_path_checks.c ./so_long_utils/game_init_functions.c \
-				./so_long_utils/game_textures_functions.c ./so_long_utils/hook_fuctions.c ./so_long_utils/move_pre_check.c \
-				./so_long_utils/filetype_check.c ./so_long_utils/hook_move_functions.c 
+SRCS		:=	so_long.c ./so_long_utils/map_checks.c \
+				./so_long_utils/map_helper_functions.c \
+				./so_long_utils/components_checks.c \
+				./so_long_utils/valid_path_checks.c \
+				./so_long_utils/game_init_functions.c \
+				./so_long_utils/game_textures_functions.c \
+				./so_long_utils/hook_fuctions.c \
+				./so_long_utils/move_pre_check.c \
+				./so_long_utils/filetype_check.c \
+				./so_long_utils/hook_move_functions.c \
+				./so_long_utils/free_functions.c
 				
 OBJS		:=	${SRCS:.c=.o}
-OBJS_DEBUG		:=	${SRCS:.c=_debug.o}
+OBJS_DEBUG	:=	${SRCS:.c=_debug.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling so_long ..."
-	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INC) -o $(NAME)
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
+# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@ $(INCL)
@@ -42,7 +50,7 @@ debug: $(LIBMLXDOTA) so_long_debug
 
 so_long_debug: $(LIBMLXDOTA) libft/libft_debug.a $(OBJS_DEBUG)
 	@echo "Compiling so_long_DEBUG ..."
-	cc -g $(OBJS_DEBUG) $(LIBMLX42) libft/libft_debug.a $(INC) -o so_long_debug
+	cc -g $(OBJS_DEBUG) $(LIBMLX42) libft/libft_debug.a $(INCL) -o so_long_debug
 
 $(LIBMLXDOTA):
 	@echo "Making MLX42..."

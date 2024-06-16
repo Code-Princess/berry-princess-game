@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 18:33:46 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:44:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,9 @@ int			get_map_data(char *map_path, t_game *game);
 void		print_moves_counter(void *game_parameter);
 void		collect_berries(mlx_key_data_t keydata, void *game_parameter);
 void		exit_castle(void *game_parameter);
+void		free_textures(t_game *game);
+void		free_matrix(char **matrix, t_point *matrix_size);
+void		free_images(void *game_parameter);
+char		*ft_strjoin_mod(char *s1, char *s2);
 
 #endif

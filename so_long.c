@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 22:30:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:34:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_princess_game(t_game *game)
 	free(game->textures[4]);
 	free(game->textures[5]);
 	free(game->textures);
-	
 }
 
 int	main(int argc, char *argv[])
@@ -48,7 +47,11 @@ int	main(int argc, char *argv[])
 			free_princess_game(princess_game);
 		}
 		else
+		{
+			free(princess_game);
 			return (1);
+		}
 	}
+	// system("leaks so_long");
 	return (0);
 }

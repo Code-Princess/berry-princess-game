@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:39:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:43:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ char	**read_map_file(char *filepath, t_game *game)
 	next_line = get_next_line(fd);
 	while (next_line != NULL)
 	{
-		map_lines = ft_strjoin(map_lines, next_line);
-		free(next_line);
+		map_lines = ft_strjoin_mod(map_lines, next_line);
 		next_line = get_next_line(fd);
 		if (next_line == NULL)
 			break ;

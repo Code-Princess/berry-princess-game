@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 17:53:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:02:31 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	gamefield_textures_init(t_game *game)
 {
-	game->textures = malloc(5 * sizeof(mlx_image_t));
+	game->textures = malloc(6 * sizeof(mlx_image_t));
 	if (game->textures == NULL)
 		return (0);
 	game->textures[0] = mlx_load_png("./textures/floor.png");
@@ -61,6 +61,7 @@ int	gamefield_textures_to_images_init(t_game *game)
 	game->image_strawberry = mlx_texture_to_image(game->mlx, game->textures[5]);
 	if (game->image_strawberry == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
+	free_textures(game);
 	return (1);
 }
 

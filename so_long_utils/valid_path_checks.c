@@ -6,27 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 23:19:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 20:13:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "../libft/libft.h"
-
-static void	free_matrix_and_begin_pos(char **matrix, \
-	t_point *matrix_size, t_point *begin_pos)
-{
-	size_t	y;
-
-	y = 0;
-	while (y < matrix_size->y)
-	{
-		free(matrix[y]);
-		y++;
-	}
-	free(matrix);
-	free(begin_pos);
-}
 
 int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 		t_point *begin_position, char *components_to_reach)
@@ -55,7 +40,7 @@ int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 		}
 		index.y++;
 	}
-	return (free_matrix_and_begin_pos(matrix, matrix_size, begin_position), 1);
+	return (free(begin_position), 1);
 }
 
 void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill)

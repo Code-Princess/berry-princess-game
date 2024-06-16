@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/15 20:57:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:51:02 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	escape_close_window(void *game_parameter)
 
 	game = game_parameter;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE) == 1)
+	{
 		mlx_close_window(game->mlx);
+		// free_images(game_parameter);
+	}
 }
 
 void	collect_berries(mlx_key_data_t keydata, void *game_parameter)

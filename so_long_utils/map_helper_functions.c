@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 14:40:21 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:49:46 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,31 @@ char	**copy_matrix(char **matrix, size_t height)
 		y++;
 	}
 	return (matrix_copied);
+}
+
+char	*ft_strjoin_mod(char *s1, char *s2)
+{
+	char	*joinedstr;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	i;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	joinedstr = (char *)malloc(s1_len + s2_len + 1);
+	if (joinedstr == 0)
+		return (NULL);
+	i = 0;
+	while (*s1 != '\0')
+	{
+		joinedstr[i++] = *s1;
+		s1++;
+	}
+	while (*s2 != '\0')
+	{
+		joinedstr[i++] = *s2;
+		s2++;
+	}
+	joinedstr[i] = '\0';
+	return (joinedstr);
 }
