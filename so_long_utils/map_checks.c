@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 21:43:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 23:03:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ size_t matrix_len, size_t matrix_height)
 int	check_valid_input(char *map_path, t_game *game)
 {
 	char	*valid_map_elements;
-	t_point	*start_position;
+	// t_point	*start_position;
 	char	*components_to_reach;
 	char	**map_data_cpy;
 
@@ -101,13 +101,14 @@ int	check_valid_input(char *map_path, t_game *game)
 	if (check_valid_map(valid_map_elements, \
 	game->map_data, game->matrix_size->x, game->matrix_size->y) == 0)
 		return (0);
-	start_position = get_start_position(game->map_data, game->matrix_size->x, \
-	game->matrix_size->y);
+	// start_position = get_start_position(game->map_data, game->matrix_size->x, \
+	// game->matrix_size->y);
+	get_start_position(game);
 	map_data_cpy = copy_matrix(game->map_data, game->matrix_size->y);
 	if (map_data_cpy == NULL)
 		return (0);
 	if (check_valid_flood_fill_path(map_data_cpy, game->matrix_size, \
-	start_position, components_to_reach) == 0)
+	game, components_to_reach) == 0)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 21:34:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:24:40 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	free_princess_game(t_game *game)
 {
 	free(game->game_window_size);
 	free(game->matrix_size);
-	free(game->textures[0]);
-	free(game->textures[1]);
-	free(game->textures[2]);
-	free(game->textures[3]);
-	free(game->textures[4]);
-	free(game->textures[5]);
-	free(game->textures);
+	// free(game->textures[0]);
+	// free(game->textures[1]);
+	// free(game->textures[2]);
+	// free(game->textures[3]);
+	// free(game->textures[4]);
+	// free(game->textures[5]);
+	// free(game->textures);
 }
 
 int	main(int argc, char *argv[])

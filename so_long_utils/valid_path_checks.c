@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 20:13:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/16 23:02:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "../libft/libft.h"
 
 int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
-		t_point *begin_position, char *components_to_reach)
+		t_game *game, char *components_to_reach)
 {
 	t_point	index;
 	size_t	i;
 
-	flood_fill(matrix, matrix_size, begin_position);
+	flood_fill(matrix, matrix_size, game);
 	index.y = 0;
 	while (index.y < matrix_size->y)
 	{
@@ -40,38 +40,37 @@ int	check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 		}
 		index.y++;
 	}
-	return (free(begin_position), 1);
+	return (1);
 }
 
-void	fill(char **tab, t_point *size, t_point *current_point, char *to_fill)
+void	fill(char **tab, t_point *size, t_game *game, char *to_fill)
 {
-	if (current_point->y >= size->y || \
-		current_point->x >= size->x || \
-		current_point->x >= size->x || \
-		!char_in_set(tab[current_point->y][current_point->x], to_fill))
+	if (game->start_pos_y >= size->y || \
+		game->start_pos_x >= size->x || \
+		!char_in_set(tab[game->start_pos_y][game->start_pos_x], to_fill))
 		return ;
-	tab[current_point->y][current_point->x] = 'F';
-	current_point->x -= 1;
-	fill(tab, size, current_point, to_fill);
-	current_point->x += 2;
-	fill(tab, size, current_point, to_fill);
-	current_point->x -= 1;
-	current_point->y -= 1;
-	fill(tab, size, current_point, to_fill);
-	current_point->y += 2;
-	fill(tab, size, current_point, to_fill);
-	current_point->y -= 1;
+	tab[game->start_pos_y][game->start_pos_x] = 'F';
+	game->start_pos_x -= 1;
+	fill(tab, size, game, to_fill);
+	game->start_pos_x += 2;
+	fill(tab, size, game, to_fill);
+	game->start_pos_x -= 1;
+	game->start_pos_y -= 1;
+	fill(tab, size, game, to_fill);
+	game->start_pos_y += 2;
+	fill(tab, size, game, to_fill);
+	game->start_pos_y -= 1;
 }
 
-void	flood_fill(char **tab, t_point *size, t_point *begin)
+void	flood_fill(char **tab, t_point *size, t_game *game)
 {
 	char	*components_to_flood;
 
 	components_to_flood = "CEP0";
-	fill(tab, size, begin, components_to_flood);
+	fill(tab, size, game, components_to_flood);
 }
 
-t_point	*get_start_position(char **matrix, size_t matrix_len,
+/* t_point	*get_start_position(char **matrix, size_t matrix_len,
 		size_t matrix_height)
 {
 	size_t	x;
@@ -96,4 +95,28 @@ t_point	*get_start_position(char **matrix, size_t matrix_len,
 		y++;
 	}
 	return (NULL);
+} */
+
+void	get_start_position(t_game *game)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (y < game->matrix_size->y)
+	{
+		x = 0;
+		while (x < game->matrix_size->x)
+		{
+			if (game->map_data[y][x] == 'P')
+			{
+				game->start_pos_x = x;
+				game->start_pos_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+	return ;
 }
