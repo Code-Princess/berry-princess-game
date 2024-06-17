@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 23:17:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 23:21:51 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ char	**read_map_file(char *filepath, t_game *game)
 			break ;
 	}
 	game->map_data = ft_split_modified(map_lines, '\n', game);
-	free(map_lines);
-	return (game->map_data);
+	return (free(map_lines), game->map_data);
 }
 
 int	check_map_rectangle(char **matrix)

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 23:15:43 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 23:25:10 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ size_t	get_row_count(char *filepath)
 	count++;
 	while (next_line != NULL)
 	{
+		free(next_line);
 		next_line = get_next_line(fd);
 		if (next_line == NULL)
 			break ;
