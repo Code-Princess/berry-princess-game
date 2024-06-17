@@ -6,11 +6,24 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 12:29:38 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:14:07 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	free_princess_game(t_game *game)
+{
+	free(game->game_window_size);
+	// free_matrix(game->map_data, game->matrix_size);
+	// free(game->textures[0]);
+	// free(game->textures[1]);
+	// free(game->textures[2]);
+	// free(game->textures[3]);
+	// free(game->textures[4]);
+	// free(game->textures[5]);
+	// free(game->textures);
+}
 
 void	free_textures(t_game *game) //not used
 {
@@ -33,15 +46,15 @@ void	free_images(void *game_parameter) // not used
 	mlx_delete_image(game->mlx, game->image_floor);
 }
 
-void	free_matrix(char **matrix, t_point *matrix_size)
+void	free_matrix_entries(char **matrix, size_t matrix_height)
 {
 	size_t	y;
 
 	y = 0;
-	while (y < matrix_size->y)
+	while (y < matrix_height)
 	{
 		free(matrix[y]);
 		y++;
 	}
-	free(matrix);
+	// free(matrix);
 }

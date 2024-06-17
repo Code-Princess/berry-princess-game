@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 23:03:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:58:02 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**read_map_file(char *filepath, t_game *game)
 	while (next_line != NULL)
 	{
 		map_lines = ft_strjoin_mod(map_lines, next_line);
+		free(next_line);
 		next_line = get_next_line(fd);
 		if (next_line == NULL)
 			break ;
@@ -87,7 +88,6 @@ size_t matrix_len, size_t matrix_height)
 int	check_valid_input(char *map_path, t_game *game)
 {
 	char	*valid_map_elements;
-	// t_point	*start_position;
 	char	*components_to_reach;
 	char	**map_data_cpy;
 
@@ -99,17 +99,17 @@ int	check_valid_input(char *map_path, t_game *game)
 	if (get_map_data(map_path, game) == 0)
 		return (0);
 	if (check_valid_map(valid_map_elements, \
-	game->map_data, game->matrix_size->x, game->matrix_size->y) == 0)
+	game->map_data, game->matrix_size_x, game->matrix_size_y) == 0)
 		return (0);
-	// start_position = get_start_position(game->map_data, game->matrix_size->x, \
-	// game->matrix_size->y);
 	get_start_position(game);
-	map_data_cpy = copy_matrix(game->map_data, game->matrix_size->y);
+	map_data_cpy = copy_matrix(game->map_data, game->matrix_size_y);
 	if (map_data_cpy == NULL)
 		return (0);
-	if (check_valid_flood_fill_path(map_data_cpy, game->matrix_size, \
+	if (check_valid_flood_fill_path(map_data_cpy, \
 	game, components_to_reach) == 0)
 		return (0);
+	free_matrix_entries(map_data_cpy, game->matrix_size_y);
+	free(map_data_cpy);
 	return (1);
 }
 
@@ -118,12 +118,9 @@ int	get_map_data(char *map_path, t_game *game)
 	game->map_data = read_map_file(map_path, game);
 	if (game->map_data == NULL)
 		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
-	game->matrix_size = malloc(1 * sizeof(t_point));
-	if (game->matrix_size == NULL)
-		return (0);
 	if (game->map_data[0] == (void *)0)
 		return (ft_printf("Error\nYour .ber-file is empty!\n"), 0);
-	game->matrix_size->x = ft_strlen(game->map_data[0]);
-	game->matrix_size->y = get_row_count(map_path);
+	game->matrix_size_x = ft_strlen(game->map_data[0]);
+	game->matrix_size_y = get_row_count(map_path);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:00 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 22:11:00 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:13:31 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int	set_images_on_gamefield(t_game *game, mlx_image_t *img, char c)
 	size_t	y;
 
 	y = 0;
-	while (y < game->matrix_size->y)
+	while (y < game->matrix_size_y)
 	{
 		x = 0;
-		while (x < game->matrix_size->x)
+		while (x < game->matrix_size_x)
 		{
 			if (game->map_data[y][x] == c)
 				mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, \
@@ -92,10 +92,10 @@ int	set_gamefield_floor(t_game *game, mlx_image_t *img)
 	size_t	y;
 
 	y = 0;
-	while (y < game->matrix_size->y)
+	while (y < game->matrix_size_y)
 	{
 		x = 0;
-		while (x < game->matrix_size->x)
+		while (x < game->matrix_size_x)
 		{
 			mlx_image_to_window(game->mlx, img, x * game->pixels_per_tile, \
 			y * game->pixels_per_tile);
@@ -124,7 +124,7 @@ void	*gamefield_init(t_game *game)
 	if (set_images_on_gamefield(game, game->image_princess, 'P') == 0)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	if (mlx_put_string(game->mlx, "MOVES: ", game->pixels_per_tile / 3, \
-		game->matrix_size->y * game->pixels_per_tile + 5) == NULL)
+		game->matrix_size_y * game->pixels_per_tile + 5) == NULL)
 		return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), NULL);
 	return (game);
 }

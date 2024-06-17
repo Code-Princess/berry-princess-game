@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 12:29:09 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:10:04 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	char			**map_data;
-	t_point			*matrix_size;
+	size_t			matrix_size_x;
+	size_t			matrix_size_y;
 	t_point			*game_window_size;
 	size_t			pixels_per_tile;
 	int				moves_counter;
@@ -58,10 +59,10 @@ int			check_valid_component_counts(char *components, char **matrix,
 				size_t map_len, size_t map_height);
 int			check_valid_map_elements(char *components, char **matrix,
 				size_t matrix_len, size_t matrix_height);
-void		flood_fill(char **tab, t_point *size, t_game *game);
-void		fill(char **tab, t_point *size, t_game *game,
+void		flood_fill(char **tab, t_game *game);
+void		fill(char **tab, t_game *game,
 				char *to_fill);
-int			check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
+int			check_valid_flood_fill_path(char **matrix,
 				t_game *game, char *components_to_reach);
 void		get_start_position(t_game *game);
 void		write_matrix(char **matrix, size_t height);
@@ -94,8 +95,10 @@ void		print_moves_counter(void *game_parameter);
 void		collect_berries(mlx_key_data_t keydata, void *game_parameter);
 void		exit_castle(void *game_parameter);
 void		free_textures(t_game *game);
-void		free_matrix(char **matrix, t_point *matrix_size);
+void		free_matrix_entries(char **matrix, \
+			size_t matrix_height);
 void		free_images(void *game_parameter);
 char		*ft_strjoin_mod(char *s1, char *s2);
+void		free_princess_game(t_game *game);
 
 #endif

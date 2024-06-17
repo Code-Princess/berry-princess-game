@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 16:22:39 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/15 16:26:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:13:47 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,13 @@ void	print_moves_counter(void *game_parameter)
 {
 	t_game				*game;
 	static mlx_image_t	*string;
+	char				*str_move_counter;
 
 	game = game_parameter;
+	str_move_counter = ft_itoa(game->moves_counter);
 	mlx_delete_image(game->mlx, string);
-	string = mlx_put_string(game->mlx, ft_itoa(game->moves_counter), \
+	string = mlx_put_string(game->mlx, str_move_counter, \
 		game->pixels_per_tile + game->pixels_per_tile, \
-		game->matrix_size->y * game->pixels_per_tile + 5);
+		game->matrix_size_y * game->pixels_per_tile + 5);
+	free(str_move_counter);
 }

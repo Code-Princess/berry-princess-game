@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:41:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 21:49:46 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:57:28 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ char	**copy_matrix(char **matrix, size_t height)
 	size_t	y;
 
 	matrix_copied = malloc(height * sizeof(char *));
+	if (matrix_copied == NULL)
+	{
+		return (NULL);
+	}
 	y = 0;
 	while (y < height)
 	{
