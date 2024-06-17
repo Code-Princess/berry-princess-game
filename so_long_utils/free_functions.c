@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 23:29:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 23:48:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ void	free_princess_game(t_game *game)
 	free(game->textures[4]);
 	free(game->textures[5]);
 	free(game->textures);
-	// mlx_delete_image(game->mlx, game->image_castle_color);
-	// mlx_delete_image(game->mlx, game->image_tree);
-	// mlx_delete_image(game->mlx, game->image_floor);
-	// mlx_delete_image(game->mlx, game->image_princess);
-	// mlx_delete_image(game->mlx, game->image_strawberry);
 }
 
 void	free_matrix_entries(char **matrix, size_t matrix_height)

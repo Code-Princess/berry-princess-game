@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:19:07 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 15:22:24 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 23:53:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ static char	*copy_a_word(char *s, int start, int end)
 		i++;
 	}
 	dest_word[i] = '\0';
-	// free(s);
 	return (dest_word);
 }
 
