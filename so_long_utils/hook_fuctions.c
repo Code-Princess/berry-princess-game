@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/17 12:56:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:54:19 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	escape_close_window(mlx_key_data_t keydata,
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 	{
 		mlx_close_window(game->mlx);
-		// free_images(game_parameter);
 	}
 }
 

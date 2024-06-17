@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 16:14:07 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 22:22:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,20 @@
 void	free_princess_game(t_game *game)
 {
 	free(game->game_window_size);
-	// free_matrix(game->map_data, game->matrix_size);
-	// free(game->textures[0]);
-	// free(game->textures[1]);
-	// free(game->textures[2]);
-	// free(game->textures[3]);
-	// free(game->textures[4]);
-	// free(game->textures[5]);
-	// free(game->textures);
-}
-
-void	free_textures(t_game *game) //not used
-{
-	mlx_delete_texture(game->textures[0]);
-	mlx_delete_texture(game->textures[1]);
-	mlx_delete_texture(game->textures[2]);
-	mlx_delete_texture(game->textures[3]);
-	mlx_delete_texture(game->textures[4]);
-	mlx_delete_texture(game->textures[5]);
+	free_matrix_entries(game->map_data, game->matrix_size_y);
+	free(game->map_data);
+	free(game->textures[0]);
+	free(game->textures[1]);
+	free(game->textures[2]);
+	free(game->textures[3]);
+	free(game->textures[4]);
+	free(game->textures[5]);
 	free(game->textures);
-}
-
-void	free_images(void *game_parameter) // not used
-{
-	t_game	*game;
-
-	game = game_parameter;
 	mlx_delete_image(game->mlx, game->image_castle_color);
 	mlx_delete_image(game->mlx, game->image_tree);
 	mlx_delete_image(game->mlx, game->image_floor);
+	mlx_delete_image(game->mlx, game->image_princess);
+	mlx_delete_image(game->mlx, game->image_strawberry);
 }
 
 void	free_matrix_entries(char **matrix, size_t matrix_height)
@@ -56,5 +41,4 @@ void	free_matrix_entries(char **matrix, size_t matrix_height)
 		free(matrix[y]);
 		y++;
 	}
-	// free(matrix);
 }

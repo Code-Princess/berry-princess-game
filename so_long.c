@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 15:23:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 22:39:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	main(int argc, char *argv[])
 			mlx_key_hook(princess_game.mlx, &hook_functions, &princess_game);
 			mlx_loop(princess_game.mlx);
 			mlx_terminate(princess_game.mlx);
-			// free_princess_game(&princess_game);
 		}
 		else
 			return (1);
 	}
 	// system("leaks so_long");
+	free_princess_game(&princess_game);
 	return (0);
 }
 // int	main(int argc, char *argv[])
