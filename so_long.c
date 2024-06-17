@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 22:24:40 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:16:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 	}
-	// system("leaks so_long");
+	system("leaks so_long");
 	return (0);
 }

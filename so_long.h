@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/16 23:03:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:29:09 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_game
 	int				collected_berries_counter;
 	size_t			start_pos_x;
 	size_t			start_pos_y;
+	id_t			can_move;
 }			t_game;
 
 int			check_valid_input(char *map_path, t_game *game);
@@ -62,8 +63,6 @@ void		fill(char **tab, t_point *size, t_game *game,
 				char *to_fill);
 int			check_valid_flood_fill_path(char **matrix, t_point *matrix_size,
 				t_game *game, char *components_to_reach);
-// t_point		*get_start_position(char **matrix, size_t matrix_len,
-// 				size_t matrix_height);
 void		get_start_position(t_game *game);
 void		write_matrix(char **matrix, size_t height);
 int			char_in_set(char c, char *set);
@@ -88,7 +87,8 @@ int			pre_check_wall_left(mlx_instance_t *img_instances, \
 				size_t amount_tile_pixels, char **matrix);
 int			pre_check_wall_right(mlx_instance_t *img_instances, \
 				size_t amount_tile_pixels, char **matrix);
-void		escape_close_window(void *game_parameter);
+void		escape_close_window(mlx_key_data_t keydata, \
+							void *game_parameter);
 int			get_map_data(char *map_path, t_game *game);
 void		print_moves_counter(void *game_parameter);
 void		collect_berries(mlx_key_data_t keydata, void *game_parameter);
