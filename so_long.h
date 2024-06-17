@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:52:46 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 19:54:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 00:08:17 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void		collect_berries(mlx_key_data_t keydata, void *game_parameter);
 void		exit_castle(void *game_parameter);
 void		free_matrix_entries(char **matrix, \
 			size_t matrix_height);
-void		free_images(t_game *game);
 char		*ft_strjoin_mod(char *s1, char *s2);
 void		free_princess_game(t_game *game);
 
