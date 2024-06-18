@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 23:55:27 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:27:09 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ int	main(int argc, char *argv[])
 				return (ft_putstr_fd_modified(mlx_strerror(mlx_errno), 1), 0);
 			mlx_key_hook(princess_game.mlx, &hook_functions, &princess_game);
 			mlx_loop(princess_game.mlx);
+			free_princess_game(&princess_game);
 			mlx_terminate(princess_game.mlx);
 		}
 		else
+		{
+			free_matrix_entries(princess_game.map_data, \
+			princess_game.matrix_size_y);
+			free(princess_game.map_data);
 			return (1);
+		}
 	}
-	free_princess_game(&princess_game);
+	system("leaks so_long");
 	return (0);
 }

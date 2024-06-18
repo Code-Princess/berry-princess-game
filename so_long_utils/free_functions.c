@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/18 11:50:37 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:22:52 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	free_princess_game(t_game *game)
 {
-	free(game->game_window_size);
 	free_matrix_entries(game->map_data, game->matrix_size_y);
 	free(game->map_data);
 	mlx_delete_texture(game->textures[0]);
