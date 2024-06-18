@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 19:16:35 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/18 12:27:09 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:41:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ int	main(int argc, char *argv[])
 		}
 		else
 		{
-			free_matrix_entries(princess_game.map_data, \
-			princess_game.matrix_size_y);
-			free(princess_game.map_data);
 			return (1);
 		}
 	}
-	system("leaks so_long");
 	return (0);
 }
