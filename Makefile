@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 12:27:10 by llacsivy          #+#    #+#              #
-#    Updated: 2024/06/18 13:41:50 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/06/18 16:12:16 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ OBJS_DEBUG	:=	${SRCS:.c=_debug.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling so_long ..."
-	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@ $(INCL)

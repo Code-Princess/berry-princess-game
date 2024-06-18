@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:01:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/17 16:12:09 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:27:04 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,6 @@ void	flood_fill(char **tab, t_game *game)
 	components_to_flood = "CEP0";
 	fill(tab, game, components_to_flood);
 }
-
-/* t_point	*get_start_position(char **matrix, size_t matrix_len,
-		size_t matrix_height)
-{
-	size_t	x;
-	size_t	y;
-	t_point	*start_position;
-
-	start_position = (t_point *)malloc(1 * sizeof(t_point));
-	y = 0;
-	while (y < matrix_height)
-	{
-		x = 0;
-		while (x < matrix_len)
-		{
-			if (matrix[y][x] == 'P')
-			{
-				start_position->x = x;
-				start_position->y = y;
-				return (start_position);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (NULL);
-} */
 
 void	get_start_position(t_game *game)
 {

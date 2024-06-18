@@ -6,13 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/18 13:38:24 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:12:00 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "../libft/libft.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 char	**read_map_file(char *filepath, t_game *game)
 {
@@ -24,11 +25,10 @@ char	**read_map_file(char *filepath, t_game *game)
 	map_lines = ft_calloc(1, sizeof(char));
 	fd = open(filepath, O_RDONLY);
 	if (fd < 0)
-	{
-		free(map_lines);
-		return (NULL);
-	}
+		return (free(map_lines), NULL);
 	next_line = get_next_line(fd);
+	if (next_line == NULL)
+		return (free(map_lines), NULL);
 	while (next_line != NULL)
 	{
 		map_lines_new = ft_strjoin_mod(map_lines, next_line);
@@ -37,7 +37,10 @@ char	**read_map_file(char *filepath, t_game *game)
 		map_lines = map_lines_new;
 		next_line = get_next_line(fd);
 		if (next_line == NULL)
+		{
+			free(map_lines);
 			break ;
+		}
 	}
 	game->map_data = ft_split_modified(map_lines, '\n', game);
 	return (free(map_lines), game->map_data);
@@ -102,14 +105,15 @@ int	check_valid_input(char *map_path, t_game *game)
 		return (0);
 	if (check_valid_map(valid_map_elements, \
 	game->map_data, game->matrix_size_x, game->matrix_size_y) == 0)
-		return (0);
+		return (free_matrix_entries(game->map_data, game->matrix_size_y), \
+		free(game->map_data), 0);
 	get_start_position(game);
 	map_data_cpy = copy_matrix(game->map_data, game->matrix_size_y);
 	if (map_data_cpy == NULL)
 		return (0);
 	if (check_valid_flood_fill_path(map_data_cpy, \
 	game, components_to_reach) == 0)
-		return (0);
+		return (free_matrix_entries(map_data_cpy, game->matrix_size_y), free(map_data_cpy), 0);
 	free_matrix_entries(map_data_cpy, game->matrix_size_y);
 	free(map_data_cpy);
 	return (1);
