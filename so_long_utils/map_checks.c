@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:26:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/06/18 17:12:00 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:45:36 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ char	**read_map_file(char *filepath, t_game *game)
 		map_lines = map_lines_new;
 		next_line = get_next_line(fd);
 		if (next_line == NULL)
-		{
-			free(map_lines);
 			break ;
-		}
 	}
 	game->map_data = ft_split_modified(map_lines, '\n', game);
 	return (free(map_lines), game->map_data);
@@ -113,10 +110,10 @@ int	check_valid_input(char *map_path, t_game *game)
 		return (0);
 	if (check_valid_flood_fill_path(map_data_cpy, \
 	game, components_to_reach) == 0)
-		return (free_matrix_entries(map_data_cpy, game->matrix_size_y), free(map_data_cpy), 0);
+		return (free_matrix_entries(map_data_cpy, game->matrix_size_y), \
+		free(map_data_cpy), 0);
 	free_matrix_entries(map_data_cpy, game->matrix_size_y);
-	free(map_data_cpy);
-	return (1);
+	return (free(map_data_cpy), 1);
 }
 
 int	get_map_data(char *map_path, t_game *game)
@@ -124,8 +121,6 @@ int	get_map_data(char *map_path, t_game *game)
 	game->map_data = read_map_file(map_path, game);
 	if (game->map_data == NULL)
 		return (ft_printf("Error\nReading .ber-file failed!\n"), 0);
-	if (game->map_data[0] == (void *)0)
-		return (ft_printf("Error\nYour .ber-file is empty!\n"), 0);
 	game->matrix_size_x = ft_strlen(game->map_data[0]);
 	game->matrix_size_y = get_row_count(map_path);
 	return (1);
