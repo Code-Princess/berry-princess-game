@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:53:52 by linda             #+#    #+#             */
-/*   Updated: 2024/06/18 12:44:40 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:38:40 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_game	*game_window_init(t_game *game)
 {
 	game->pixels_per_tile = 40;
 	game->game_window_size_x = game->matrix_size_x * game->pixels_per_tile;
-	game->game_window_size_y = (game->matrix_size_y + 1) * \
+	game->game_window_size_y = (game->matrix_size_y + 2) * \
 		game->pixels_per_tile;
 	game->moves_counter = 0;
 	game->can_move = 1;

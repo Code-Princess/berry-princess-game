@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:56:24 by linda             #+#    #+#             */
-/*   Updated: 2024/06/17 19:54:19 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:39:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	exit_castle(void *game_parameter)
 	{
 		game->image_princess->instances[0].enabled = false;
 		game->can_move = 0;
+		mlx_put_string(game->mlx, "YOU WON", game->pixels_per_tile / 3, \
+		(game->matrix_size_y + 1) * game->pixels_per_tile + 5);
 	}
 }
 
