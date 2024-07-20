@@ -18,7 +18,7 @@ make
 ## Run the game
 To run the game, use this command in your terminal:
 ```
-./so_long ./maps/map_04.ber
+./so_long maps/map_04.ber
 ```
 You can replace *maps/map_04.ber* with the path to your desired map file.
 
