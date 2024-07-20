@@ -11,7 +11,7 @@ Please note that this program is only compatible with Linux or macOS. Ensure tha
 ## Installation
 To install the project follow these steps in your terminal:
 ```
-git clone https://github.com/Code-Princess/berry-princess-game.git
+git clone git@github.com:Code-Princess/berry-princess-game.git
 cd berry-princess-game
 make
 ```
