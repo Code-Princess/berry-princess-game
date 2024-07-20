@@ -4,7 +4,7 @@ Feel free to explore the code and give it a try!
 ## Controls
 Use the following controls to play the game:
 - **Arrow keys** or **WASD**: Move the princess
-- **Escape** or **Q**: Exit the game
+- **Escape**: Exit the game
 ## 👀 YouTube Video: TODO
 ## Prerequisites
 Please note that this program is only compatible with Linux or macOS. Ensure that you have a C-cpmiler e.g. cc installed on your operating system.
@@ -18,7 +18,7 @@ make
 ## Run the game
 To run the game, use this command in your terminal:
 ```
-./berry-princess ./maps/map1.ber
+./so_long ./maps/map_04.ber
 ```
-You can replace *./maps/map1.ber* with the path to your desired map file.
+You can replace *maps/map_04.ber* with the path to your desired map file.
 
