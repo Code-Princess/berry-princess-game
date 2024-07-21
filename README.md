@@ -12,7 +12,7 @@ Use the following controls to play the game:
 [![Code-Princess/Mein erstes selbst programmiertes 2D Computer Spiel/Berry-Princess-Game/Retro-Style](https://ytcards.demolab.com/?id=uH6tfKEWT6Y&title=Code-Princess/Mein+erstes+selbst+programmiertes+2D+Computer+Spiel/Berry-Princess-Game/Retro-Style&lang=en&timestamp=1721426400&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=850&border_radius=5&duration=262 "Code-Princess/Mein erstes selbst programmiertes 2D Computer Spiel/Berry-Princess-Game/Retro-Style")](https://youtu.be/uH6tfKEWT6Y?si=ZQqomfBc4khFFNkN)
 <!-- END YOUTUBE-CARDS -->
 ## Prerequisites
-Please note that this program is only compatible with Linux or macOS. Ensure that you have a C-cpmiler e.g. cc installed on your operating system.
+Please note that this program is only compatible with Linux or macOS. Ensure that you have a C-compiler e.g. cc installed on your operating system.
 ## Installation
 To install the project follow these steps in your terminal:
 ```
